@@ -15,13 +15,22 @@
 ### structure 结构型
 
 ## 四、**sun-summarize-interview -- 过往面试经历汇总**
-### alibababa 阿里巴巴
-#### first 首轮面试
+### 1、alibababa 阿里巴巴
+#### （1）first 首轮面试
 ##### QUESTION.md 问答题
 ##### WriteExam.java 笔试题题
-#### second 二轮面试
+#### （2）second 二轮面试
 ##### QUESTION.md 问答题
 ##### WriteExam.java 笔试题题
+
+### 2、alibababa 百度
+#### （1）first 首轮面试
+##### QUESTION.md 问答题
+##### WriteExam.java 笔试题题
+#### （2）second 二轮面试
+##### QUESTION.md 问答题
+##### WriteExam.java 笔试题题
+
 
 ## 五、**sun-summarize-leetcode --- leetCode算法解答**
 

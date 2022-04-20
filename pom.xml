@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sun.summarize</groupId>
+    <artifactId>sun-summarize</artifactId>
+    <packaging>pom</packaging>
+    <version>1.1.0</version>
+    <modules>
+        <module>sun-summarize-interview</module>
+        <module>sun-summarize-leetcode</module>
+        <module>sun-summarize-base-java</module>
+        <module>sun-summarize-design-pattern</module>
+        <module>sun-summarize-netty</module>
+        <module>sun-summarize-base-algorithm</module>
+    </modules>
+
+
+</project>

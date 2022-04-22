@@ -35,3 +35,4 @@ build/
 
 ### LeetCode ###
 *.json
+/sun-summarize-leetcode/src/main/java/record/leetcode/editor/cn/doc/

@@ -28,7 +28,7 @@ public class ListNode {
 	 *
 	 * @param val 节点值
 	 */
-	ListNode(int val) {
+	public ListNode(int val) {
 		this.val = val;
 	}
 
@@ -38,7 +38,7 @@ public class ListNode {
 	 * @param val  当前节点值
 	 * @param next 下一个节点值
 	 */
-	ListNode(int val, ListNode next) {
+	public ListNode(int val, ListNode next) {
 		this.val = val;
 		this.next = next;
 	}

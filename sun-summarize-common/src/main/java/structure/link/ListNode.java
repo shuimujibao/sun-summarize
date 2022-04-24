@@ -22,4 +22,24 @@ public class ListNode {
 	 * 下一个节点
 	 */
 	public ListNode next;
+
+	/**
+	 * 值构造器
+	 *
+	 * @param val 节点值
+	 */
+	public ListNode(int val) {
+		this.val = val;
+	}
+
+	/**
+	 * 节点构造器
+	 *
+	 * @param val  当前节点值
+	 * @param next 下一个节点值
+	 */
+	public ListNode(int val, ListNode next) {
+		this.val = val;
+		this.next = next;
+	}
 }

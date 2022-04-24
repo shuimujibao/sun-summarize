@@ -12,4 +12,12 @@
     <artifactId>sun-summarize-interview</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.summarize</groupId>
+            <artifactId>sun-summarize-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

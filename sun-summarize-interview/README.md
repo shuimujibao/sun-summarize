@@ -31,4 +31,10 @@ sun-summarize-interview -- 过往面试经历汇总目录
   - 三轮面试
     - [问答题](../sun-summarize-interview/src/main/java/didi/third/Question.md) 
     - [笔试题](../sun-summarize-interview/src/main/java/didi/third/WriteExam.java) 
+    
 
+* **跟谁学**        
+  - 首轮面试
+    - [问答题](src/main/java/genshuixue/first/Question.md) 
+    - [笔试题1](../sun-summarize-interview/src/main/java/genshuixue/first/WriteExamOne.java) 
+    - [笔试题2](../sun-summarize-interview/src/main/java/genshuixue/first/WriteExamTwo.java) 

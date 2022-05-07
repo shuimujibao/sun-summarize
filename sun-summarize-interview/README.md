@@ -38,3 +38,16 @@ sun-summarize-interview -- 过往面试经历汇总目录
     - [问答题](src/main/java/genshuixue/first/Question.md) 
     - [笔试题1](../sun-summarize-interview/src/main/java/genshuixue/first/WriteExamOne.java) 
     - [笔试题2](../sun-summarize-interview/src/main/java/genshuixue/first/WriteExamTwo.java) 
+
+
+* **瓜子网**        
+  - 首轮面试
+    - [问答题](src/main/java/guazi/first/Question.md) 
+    
+
+* **京东**        
+  - 首轮面试
+    - [问答题](src/main/java/jingdong/first/Question.md) 
+    - [笔试题](../sun-summarize-interview/src/main/java/jingdong/first/WriteExam.java) 
+  - 二轮面试
+    - [问答题](../sun-summarize-interview/src/main/java/jingdong/second/Question.md) 

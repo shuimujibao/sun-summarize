@@ -20,6 +20,16 @@ sun-summarize-interview -- 过往面试经历汇总目录
     - [问答题](../sun-summarize-interview/src/main/java/baidu/fourth/Question.md) 
   - 五轮面试
     - [问答题](../sun-summarize-interview/src/main/java/baidu/five/Question.md) 
+
+
+* **贝壳找房**        
+  - 首轮面试
+    - [问答题](src/main/java/beike/first/Question.md) 
+  - 二轮面试
+    - [问答题](../sun-summarize-interview/src/main/java/beike/second/Question.md) 
+    - [笔试题](../sun-summarize-interview/src/main/java/beike/second/WriteExam.java) 
+  - 三轮面试
+    - [问答题](../sun-summarize-interview/src/main/java/beike/third/Question.md) 
     
 
 * **滴滴**        
@@ -83,10 +93,17 @@ sun-summarize-interview -- 过往面试经历汇总目录
   - 首轮面试
     - [问答题](src/main/java/shuidichou/first/Question.md) 
     
-    
-
 * **探探**        
   - 首轮面试
     - [问答题](src/main/java/tantan/first/Question.md) 
     - [笔试题1](../sun-summarize-interview/src/main/java/tantan/first/WriteExamOne.java) 
     - [笔试题2](../sun-summarize-interview/src/main/java/tantan/first/WriteExamTwo.java) 
+    
+* **微博**          
+  - 首轮面试
+    - [问答题](src/main/java/weibo/first/Question.md) 
+    
+* **58同城**        
+  - 首轮面试
+    - [问答题](src/main/java/wuba/first/Question.md) 
+    - [笔试题1](../sun-summarize-interview/src/main/java/wuba/first/WriteExam.java) 

@@ -22,6 +22,25 @@ sun-summarize-interview -- 过往面试经历汇总目录
     - [问答题](../sun-summarize-interview/src/main/java/baidu/five/Question.md) 
 
 
+* **字节跳动**        
+  - 首轮面试
+    - [问答题](src/main/java/zijie/first/Question.md) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/first/WriteExamOne.java) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/first/WriteExamTwo.java) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/first/WriteExamThree.java) 
+  - 二轮面试
+    - [问答题](../sun-summarize-interview/src/main/java/zijie/second/Question.md) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/second/WriteExamOne.java) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/second/WriteExamTwo.java) 
+  - 三轮面试
+    - [问答题](../sun-summarize-interview/src/main/java/zijie/third/Question.md) 
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/third/WriteExam.java) 
+  - 四轮面试
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/forth/WriteExam.java) 
+  - 五轮面试
+    - [笔试题](../sun-summarize-interview/src/main/java/zijie/five/WriteExam.java) 
+
+
 * **贝壳找房**        
   - 首轮面试
     - [问答题](src/main/java/beike/first/Question.md) 

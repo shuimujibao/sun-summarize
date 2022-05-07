@@ -73,3 +73,7 @@ sun-summarize-interview -- 过往面试经历汇总目录
     - [笔试题](../sun-summarize-interview/src/main/java/moka/first/WriteExam.java) 
   - 二轮面试
     - [问答题](../sun-summarize-interview/src/main/java/moka/second/Question.md) 
+
+* **好看视频**          
+  - 首轮面试
+    - [问答题](src/main/java/shipin/first/Question.md) 

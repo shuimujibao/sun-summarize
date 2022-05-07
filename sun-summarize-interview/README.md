@@ -107,3 +107,15 @@ sun-summarize-interview -- 过往面试经历汇总目录
   - 首轮面试
     - [问答题](src/main/java/wuba/first/Question.md) 
     - [笔试题1](../sun-summarize-interview/src/main/java/wuba/first/WriteExam.java) 
+    
+   
+* **小米**        
+  - 首轮面试
+    - [问答题](src/main/java/xiaomi/first/Question.md) 
+    - [笔试题1](../sun-summarize-interview/src/main/java/xiaomi/first/WriteExam.java) 
+    
+  
+* **猿辅导**        
+  - 首轮面试
+    - [问答题](src/main/java/yuanfudao/first/Question.md) 
+    - [笔试题1](../sun-summarize-interview/src/main/java/yuanfudao/first/WriteExam.java) 

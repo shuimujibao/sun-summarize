@@ -1,9 +1,9 @@
 package structure.bridge;
 
-import designpatterns.structure.bridge.bag.BagAbstraction;
-import designpatterns.structure.bridge.bag.SmallBag;
-import designpatterns.structure.bridge.material.Material;
-import designpatterns.structure.bridge.material.Paper;
+import structure.bridge.bag.BagAbstraction;
+import structure.bridge.bag.SmallBag;
+import structure.bridge.material.Material;
+import structure.bridge.material.Paper;
 
 /**
  * @author : itw_sunxy

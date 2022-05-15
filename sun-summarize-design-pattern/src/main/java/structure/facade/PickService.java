@@ -1,9 +1,9 @@
 package structure.facade;
 
-import designpatterns.structure.bridge.bag.BagAbstraction;
-import designpatterns.structure.bridge.bag.SmallBag;
-import designpatterns.structure.bridge.material.Material;
-import designpatterns.structure.bridge.material.Paper;
+import structure.bridge.bag.BagAbstraction;
+import structure.bridge.bag.SmallBag;
+import structure.bridge.material.Material;
+import structure.bridge.material.Paper;
 
 public class PickService {
     public void doPick() {

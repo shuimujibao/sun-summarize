@@ -1,6 +1,6 @@
 package structure.facade;
 
-import designpatterns.structure.composite.DistrictNode;
+import structure.composite.DistrictNode;
 
 public class SendService {
     public void doSend() {

@@ -40,8 +40,8 @@ package record.leetcode.editor.cn;
 // Related Topics 哈希表 字符串 滑动窗口
 // 👍 7429 👎 0
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 	public static void main(String[] args) {
@@ -52,17 +52,19 @@ public class LongestSubstringWithoutRepeatingCharacters {
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int lengthOfLongestSubstring(String s) {
-			int n = s.length(), ans = 0;
-
-			Map<Character, Integer> map = new HashMap<>();
-
-			for (int end = 0, start = 0; end < n; end++) {
-				char alpha = s.charAt(end);
-				if (map.containsKey(alpha)) {
-					start = Math.max(map.get(alpha), start);
+			Set<Character> occ = new HashSet<>();
+			int n = s.length();
+			int rk = -1;
+			int ans = 0;
+			for (int i = 0; i < n; i++) {
+				if (i != 0) {
+					occ.remove(s.charAt(i - 1));
 				}
-				ans = Math.max(ans, end - start + 1);
-				map.put(s.charAt(end), end + 1);
+				while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+					rk++;
+					occ.add(s.charAt(i));
+				}
+				ans = Math.max(ans, rk - ans + 1);
 			}
 			return ans;
 		}

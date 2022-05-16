@@ -16,7 +16,7 @@ import structure.link.ListNode;
  */
 public class WriteExam {
 	public ListNode reverseList(ListNode head) {
-
-		return new ListNode();
+		return null;
+//		return new ListNode();
 	}
 }

@@ -46,7 +46,8 @@ id(主键)|c（普通索引）|d（无索引）
    1   |   begin;<br>select * from t where id = 9 for update;| -
    2   | 	- | begin;<br> select * from t where id = 6 for update;	
    3   | 	- | insert into user value(7,7,7)<br>blocked	
-   4   | 	insert into user value(7,7,7)<br>blocked | -	
+   4   | 	insert into user value(7,7,7)<br>blocked | -  
+   	
   不同于写锁相互之间是互斥的原则，间隙锁之间不是互斥的，如果一个事务A获取到了（5,10]之间的间隙锁，
   另一个事务B也可以获取到（5,10]之间的间隙锁。这时就可能会发生死锁问题    
   如下案例:   

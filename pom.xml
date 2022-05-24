@@ -16,6 +16,7 @@
         <module>sun-summarize-netty</module>
         <module>sun-summarize-base-algorithm</module>
         <module>sun-summarize-common</module>
+        <module>sun-summarize-spring-cloud</module>
     </modules>
 
 

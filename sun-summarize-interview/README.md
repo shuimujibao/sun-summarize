@@ -153,3 +153,7 @@ sun-summarize-interview -- 过往面试经历汇总目录
 * **集度**          
   - 首轮面试
     - [问答题](src/main/java/jidu/first/Question.md) 
+           
+* **三一重工**          
+  - 首轮面试
+    - [问答题](src/main/java/sanyizhonggong/first/Question.md) 

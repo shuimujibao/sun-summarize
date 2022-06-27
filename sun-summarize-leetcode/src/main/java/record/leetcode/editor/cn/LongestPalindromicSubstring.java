@@ -39,7 +39,42 @@ public class LongestPalindromicSubstring {
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public String longestPalindrome(String s) {
-			return "";
+
+			if (s == null || s.length() < 1) {
+				return s;
+			}
+
+			int length = s.length();
+
+			boolean[][] dp = new boolean[length - 1][length - 1];
+
+			for (int i = 0; i < length; i++) {
+				dp[i][i] = true;
+			}
+
+			int maxLen = 0;
+			int begin = 0;
+
+			for (int column = 1; column < length; column++) {
+				for (int row = 0; row < length; row++) {
+					if (s.charAt(row) != s.charAt(column)) {
+						dp[row][column] = false;
+					} else {
+						if (column - row < 3) {
+							dp[row][column] = true;
+						} else {
+							dp[row][column] = dp[row + 1][column - 1];
+						}
+					}
+
+					if (dp[row][column] && column - row + 1 > maxLen) {
+						maxLen = column - row + 1;
+						begin = row;
+					}
+				}
+			}
+
+			return s.substring(begin, begin + maxLen);
 		}
 	}
 //leetcode smit region end(Prohibit modification and deletion)

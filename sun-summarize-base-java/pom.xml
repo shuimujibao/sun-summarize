@@ -11,5 +11,12 @@
 
     <artifactId>sun-summarize-base-java</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.summarize</groupId>
+            <artifactId>sun-summarize-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

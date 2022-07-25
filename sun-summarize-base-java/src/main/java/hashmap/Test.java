@@ -3,6 +3,9 @@ package hashmap;
 import structure.link.ListNode;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Test
@@ -13,6 +16,7 @@ import java.util.Arrays;
  * @since: 2022年07月20日 19:06:00
  */
 public class Test {
+
 	public static void main(String[] args) {
 
 		// 数组
@@ -35,5 +39,10 @@ public class Test {
 		}
 
 		// 红黑树
+
+		// hashMap
+		HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+
+
 	}
 }

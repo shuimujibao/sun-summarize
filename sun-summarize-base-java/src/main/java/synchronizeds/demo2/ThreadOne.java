@@ -15,7 +15,6 @@ public class ThreadOne implements Runnable {
 	@SneakyThrows
 	@Override
 	public void run() {
-		Test test = new Test();
-		test.test();
+		Test.test();
 	}
 }

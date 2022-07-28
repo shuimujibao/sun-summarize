@@ -27,7 +27,8 @@ public class Test {
 	/**
 	 * 待执行方法一
 	 */
-	void test() {
+	void test() throws InterruptedException {
+		Thread.sleep(5000);
 		System.out.println("执行方法一！！！");
 	}
 

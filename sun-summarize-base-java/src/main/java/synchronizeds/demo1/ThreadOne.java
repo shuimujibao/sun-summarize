@@ -1,5 +1,7 @@
 package synchronizeds.demo1;
 
+import lombok.SneakyThrows;
+
 /**
  * ThreadOne
  *
@@ -10,6 +12,7 @@ package synchronizeds.demo1;
  */
 public class ThreadOne implements Runnable {
 
+	@SneakyThrows
 	@Override
 	public void run() {
 		Test test = new Test();

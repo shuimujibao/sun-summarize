@@ -3,9 +3,9 @@ package juc.countdownlatch;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * ThreadOne
+ * ActionWorker
  *
- * @summary ThreadOne
+ * @summary ActionWorker
  * @author: sunxiaoyu016
  * @Copyright (c) 2022, © 神州租车（北京）科技有限公司
  * @since: 2022年07月27日 19:16:00

@@ -12,7 +12,7 @@ import java.util.concurrent.*;
  */
 public class ThreadPoolUtil {
 	// 核心线程数
-	private static final int corePoolSize = 5;
+	private static final int corePoolSize = 10;
 	// 最大线程数
 	private static final int maximumPoolSize = 10;
 	// 线程保留时间
@@ -20,7 +20,7 @@ public class ThreadPoolUtil {
 	// 线程保留时间单位
 	private static final TimeUnit unit = TimeUnit.SECONDS;
 	// 阻塞队列
-	private static final BlockingQueue<Runnable> workQueue = new LinkedBlockingDeque<>(100);
+	private static final BlockingQueue<Runnable> workQueue = new LinkedBlockingDeque<>(200);
 	// 拒绝策略
 	private static final RejectedExecutionHandler defaultHandler = new ThreadPoolExecutor.AbortPolicy();
 	// 初始化线程池

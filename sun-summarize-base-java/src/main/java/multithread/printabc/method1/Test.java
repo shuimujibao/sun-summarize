@@ -1,4 +1,4 @@
-package multithread;
+package multithread.printabc.method1;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

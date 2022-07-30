@@ -29,8 +29,14 @@ public class GenerateChinesePDF {
 		data.put("1", "sun");
 	}
 
+	/**
+	 * 基于模板生成PDF
+	 *
+	 * @param template 模板
+	 * @return 生成后的pdf
+	 */
 
-	public static byte[] generateChinesePDF(byte[] template) {
+	static byte[] generateChinesePDF(byte[] template) {
 		ByteArrayOutputStream bos = null;
 		try {
 			PdfReader reader = new PdfReader(template);
@@ -65,10 +71,12 @@ public class GenerateChinesePDF {
 	}
 
 	/**
+	 * pdf中的数据填充
+	 *
 	 * @param fields 域
 	 * @param data 数据
-	 * @throws IOException
-	 * @throws DocumentException
+	 * @throws IOException io异常
+	 * @throws DocumentException 文件异常
 	 */
 	private static void fillData(AcroFields fields, Map<String, String> data) throws IOException, DocumentException {
 		List<String> keys = new ArrayList<String>();

@@ -12,10 +12,6 @@ import java.io.*;
  */
 public class GetTemplate {
 
-	public static void main(String[] args) throws FileNotFoundException {
-		option();
-	}
-
 	/**
 	 * 读取PDF模板
 	 *

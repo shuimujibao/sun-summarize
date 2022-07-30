@@ -17,10 +17,10 @@ public class WriteLocal {
 	/**
 	 * 传入需要写入的文件路径
 	 *
-	 * @param fileWriteRoad 路径
+	 * @param fileWriteRoad 传入需要写入的文件路径
 	 * @param bytes         待写入数据
 	 */
-	public static void fileWrite(byte[] bytes, File fileWriteRoad) {// 传入需要写入的文件路径
+	static void fileWrite(byte[] bytes, File fileWriteRoad) {
 		try {
 			// 通过传入fileWriteRoad文件路径创建一个输出流对象
 			FileOutputStream writeFile = new FileOutputStream(fileWriteRoad);

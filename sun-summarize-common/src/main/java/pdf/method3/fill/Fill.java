@@ -1,5 +1,8 @@
 package pdf.method3.fill;
 
+import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.PdfStamper;
+
 import java.util.Map;
 
 /**
@@ -15,7 +18,8 @@ public interface Fill {
 	/**
 	 * 填充动作
 	 *
-	 * @param data 数据源头
+	 * @param dataSource 数据源
+	 * @param form pdf表单
 	 */
-	void action(Map<String, String> data);
+	void action(Map<String, Object> dataSource, PdfStamper stamper);
 }

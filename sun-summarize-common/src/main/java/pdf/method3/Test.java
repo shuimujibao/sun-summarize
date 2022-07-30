@@ -61,8 +61,11 @@ public class Test {
 
 		Map<String, Object> o = new HashMap<>();
 		o.put("list", listMap);
+		o.putAll(data);
 
-		creatPdf(o);
+//		creatPdf(o);
+
+		CreateETCPdf.create(o);
 	}
 
 	public static void creatPdf(Map<String, Object> map) {

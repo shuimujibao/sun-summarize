@@ -1,5 +1,9 @@
 package pdf.method3.fill;
 
+import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfStamper;
+
 import java.util.Map;
 
 /**
@@ -12,9 +16,26 @@ import java.util.Map;
  */
 public class WriteWordFill implements Fill {
 
-
 	@Override
-	public void action(Map<String, String> data) {
+	public void action(Map<String, Object> dataSource, PdfStamper stamper) {
+		try {
+			// 获取pdf表单
+			AcroFields form = stamper.getAcroFields();
 
+			// 字体设置
+			BaseFont bf = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
+			form.addSubstitutionFont(bf);
+
+			// 填充文本内容
+			for (String key : dataSource.keySet()) {
+				Object o = dataSource.get(key);
+				if (o instanceof String) {
+					String value = (String) dataSource.get(key);
+					form.setField(key, value);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

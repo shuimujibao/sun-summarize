@@ -25,7 +25,8 @@ public class CreateTable {
 	 *
 	 * @param document 文件
 	 */
-	private static void appendTableToDocument(Document document) {
+	public static void appendTableToDocument(Document document) {
+
 		//定义 6列的表格
 		PdfPTable table = new PdfPTable(new float[]{80, 80, 80, 80, 80, 80});
 		table.setTotalWidth(520);

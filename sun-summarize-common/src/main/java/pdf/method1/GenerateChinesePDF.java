@@ -1,17 +1,14 @@
 package pdf.method1;
 
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.AcroFields;
-import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.*;
+import pdf.methiod2.CreatePdf;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * GenerateChinesePDF
@@ -26,7 +23,10 @@ public class GenerateChinesePDF {
 	public static final Map<String, String> data = new HashMap<>();
 
 	static {
-		data.put("1", "sun");
+		data.put("order_id", "121214434");
+		data.put("rent_name", "孙晓宇");
+		data.put("apply_time", new Date().toString());
+		data.put("amount", "11.34");
 	}
 
 	/**
@@ -39,20 +39,37 @@ public class GenerateChinesePDF {
 	static byte[] generateChinesePDF(byte[] template) {
 		ByteArrayOutputStream bos = null;
 		try {
+			// 读取PDF文件数据
 			PdfReader reader = new PdfReader(template);
 			bos = new ByteArrayOutputStream();
-			// 将要生成的目标PDF文件名称
 			PdfStamper ps = new PdfStamper(reader, bos);
 
+			// 字体设置
 			BaseFont bf = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
 			ArrayList<BaseFont> fontList = new ArrayList<>();
 			fontList.add(bf);
-			/// 取出报表模板中的所有字段
+
+			// 取出报表模板中的所有字段并填充
 			AcroFields fields = ps.getAcroFields();
 			fields.setGenerateAppearances(true);
 			fields.setSubstitutionFonts(fontList);
 			fillData(fields, data);
-			// 必须要调用这个，否则文档不会生成的  如果为false那么生成的PDF文件还能编辑，一定要设为true
+
+			// 动态设置表格
+			Rectangle pageSize = reader.getPageSize(1);
+			Document document = new Document(pageSize);
+			document.open();
+
+
+			PdfPTable table = new PdfPTable(9);
+			CreatePdf.setTableHeader(table);
+//			CreatePdf.replenishTable(itinerary.getTableContentList(), table);
+			table.setSpacingBefore(100f);
+			document.add(table);
+
+
+			// 必须要调用这个，否则文档不会生成的
+			// 如果为false那么生成的PDF文件还能编辑，一定要设为true
 			ps.setFormFlattening(true);
 			ps.close();
 			return bos.toByteArray();

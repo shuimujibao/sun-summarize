@@ -84,7 +84,7 @@ public class CreatePdf {
 	 *
 	 * @param table 表格
 	 */
-	private static void setTableHeader(PdfPTable table) {
+	public static void setTableHeader(PdfPTable table) {
 		List<String> tableHeaders = new ArrayList<>();
 		tableHeaders.add("序号");
 		tableHeaders.add("车牌号");
@@ -110,7 +110,7 @@ public class CreatePdf {
 	 * @param tableContentList 内容
 	 * @param table            表格
 	 */
-	private static void replenishTable(List<TableContent> tableContentList, PdfPTable table) {
+	public static void replenishTable(List<TableContent> tableContentList, PdfPTable table) {
 		for (TableContent tableContent : tableContentList) {
 			Paragraph element1 = new Paragraph(tableContent.getNumber().toString(), font);
 			Paragraph element2 = new Paragraph(tableContent.getCarNumber(), font);

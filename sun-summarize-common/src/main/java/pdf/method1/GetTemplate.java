@@ -18,7 +18,7 @@ public class GetTemplate {
 	 * @return byte[] 字节流
 	 */
 	static byte[] option() throws FileNotFoundException {
-		InputStream resourceAsStream = new FileInputStream("/Users/tal/IdeaProjects/workspace/sun-summarize/sun-summarize-common/src/main/java/pdf/method1/model/RENTAL.pdf");
+		InputStream resourceAsStream = new FileInputStream("/Users/tal/IdeaProjects/workspace/sun-summarize/sun-summarize-common/src/main/java/pdf/method1/model/ETC_TEMPLATE.pdf");
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		byte[] buffer = new byte[4096];
 		int n = 0;

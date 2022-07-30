@@ -1,13 +1,10 @@
 package pdf.method1;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import pdf.methiod2.CreatePdf;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.List;
 import java.util.*;
 
 /**
@@ -56,17 +53,6 @@ public class GenerateChinesePDF {
 			fillData(fields, data);
 
 			// 动态设置表格
-			Rectangle pageSize = reader.getPageSize(1);
-			Document document = new Document(pageSize);
-			document.open();
-
-
-			PdfPTable table = new PdfPTable(9);
-			CreatePdf.setTableHeader(table);
-//			CreatePdf.replenishTable(itinerary.getTableContentList(), table);
-			table.setSpacingBefore(100f);
-			document.add(table);
-
 
 			// 必须要调用这个，否则文档不会生成的
 			// 如果为false那么生成的PDF文件还能编辑，一定要设为true
@@ -109,7 +95,6 @@ public class GenerateChinesePDF {
 		for (String itemKey : formFields.keySet()) {
 			if (!keys.contains(itemKey)) {
 				fields.setField(itemKey, " ");
-
 			}
 		}
 	}

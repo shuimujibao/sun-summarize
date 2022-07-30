@@ -1,4 +1,4 @@
-package pdf;
+package pdf.methiod2;
 
 import com.itextpdf.text.DocumentException;
 

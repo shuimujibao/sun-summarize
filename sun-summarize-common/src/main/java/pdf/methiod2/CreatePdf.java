@@ -1,4 +1,4 @@
-package pdf;
+package pdf.methiod2;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -56,7 +56,7 @@ public class CreatePdf {
 
 		// TODO 横线
 
-		// 有序字段
+		// 有序列表
 		Paragraph elementOrderNo = new Paragraph("订单号:" + itinerary.getOrderNo(), font);
 		Paragraph elementRentName = new Paragraph("承租人姓名:" + itinerary.getRentName(), font);
 		Paragraph elementApplyTime = new Paragraph("申请时间:" + itinerary.getApplyTime(), font);

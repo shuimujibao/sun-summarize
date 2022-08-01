@@ -44,7 +44,7 @@ public class TableFill implements Fill {
 				PdfPTable table = new PdfPTable(column);
 				float tatalWidth = signRect.getRight() - signRect.getLeft() - 1;
 				int size = lists.get(0).size();
-				float width[] = new float[size];
+				float[] width = new float[size];
 				for (int i = 0; i < size; i++) {
 					if (i == 0) {
 						width[i] = 60f;
@@ -59,8 +59,7 @@ public class TableFill implements Fill {
 				table.setSplitRows(true);
 				Font FontProve = new Font(bf, 10, 0);
 				// 表格数据填写
-				for (int i = 0; i < row; i++) {
-					List<String> list = lists.get(i);
+				for (List<String> list : lists) {
 					for (int j = 0; j < column; j++) {
 						Paragraph paragraph = new Paragraph(String.valueOf(list.get(j)), FontProve);
 						PdfPCell cell = new PdfPCell(paragraph);

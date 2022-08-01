@@ -1,10 +1,7 @@
 package pdf.method3;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfCopy;
-import com.itextpdf.text.pdf.PdfImportedPage;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.*;
 import pdf.method3.fill.Fill;
 import pdf.method3.fill.TableFill;
 import pdf.method3.fill.WriteWordFill;
@@ -54,6 +51,9 @@ public class CreateETCPdf {
 			writeWordFill.action(dataSource, stamper);
 
 			// 表格内容填充
+			stamper.insertPage(reader.getNumberOfPages() + 4, reader.getPageSizeWithRotation(1));//新增空白页
+			PdfContentByte under = stamper.getOverContent(reader.getNumberOfPages());//捕获新增的空白页
+
 			Fill tableFill = new TableFill();
 			tableFill.action(dataSource, stamper);
 

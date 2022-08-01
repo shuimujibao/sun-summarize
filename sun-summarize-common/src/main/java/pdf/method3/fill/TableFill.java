@@ -17,24 +17,28 @@ import java.util.Map;
  * @Copyright (c) 2022, © 神州租车（北京）科技有限公司
  * @since: 2022年07月30日 14:10:00
  */
+@SuppressWarnings("unchecked")
 public class TableFill implements Fill {
 
 	@Override
 	public void action(Map<String, Object> data, PdfStamper stamper) {
 		try {
-
+			// 获取表单
 			AcroFields form = stamper.getAcroFields();
 
 			// 字体设置
 			BaseFont bf = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
 
+			// 获取待填充数据
 			Map<String, List<List<String>>> listMap = (Map<String, List<List<String>>>) data.get("list");
+
 			for (String key : listMap.keySet()) {
+				// 表格总条数
 				List<List<String>> lists = listMap.get(key);
 				int pageNo = form.getFieldPositions(key).get(0).page;
 				PdfContentByte pcb = stamper.getOverContent(pageNo);
 				Rectangle signRect = form.getFieldPositions(key).get(0).position;
-				//表格位置
+				// 表格位置
 				int column = lists.get(0).size();
 				int row = lists.size();
 				PdfPTable table = new PdfPTable(column);
@@ -54,7 +58,7 @@ public class TableFill implements Fill {
 				table.setSplitLate(false);
 				table.setSplitRows(true);
 				Font FontProve = new Font(bf, 10, 0);
-				//表格数据填写
+				// 表格数据填写
 				for (int i = 0; i < row; i++) {
 					List<String> list = lists.get(i);
 					for (int j = 0; j < column; j++) {

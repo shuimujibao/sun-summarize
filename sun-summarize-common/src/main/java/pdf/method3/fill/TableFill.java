@@ -38,18 +38,21 @@ public class TableFill implements Fill {
 				int pageNo = form.getFieldPositions(key).get(0).page;
 				PdfContentByte pcb = stamper.getOverContent(pageNo);
 				Rectangle signRect = form.getFieldPositions(key).get(0).position;
-				// 表格位置
+
+				// 获取表格行列，构建表格
 				int column = lists.get(0).size();
 				int row = lists.size();
 				PdfPTable table = new PdfPTable(column);
-				float tatalWidth = signRect.getRight() - signRect.getLeft() - 1;
+
+				// 样式设置
+				float totalWidth = signRect.getRight() - signRect.getLeft() - 1;
 				int size = lists.get(0).size();
 				float[] width = new float[size];
 				for (int i = 0; i < size; i++) {
 					if (i == 0) {
 						width[i] = 60f;
 					} else {
-						width[i] = (tatalWidth - 60) / (size - 1);
+						width[i] = (totalWidth - 60) / (size - 1);
 					}
 				}
 				table.setTotalWidth(width);
@@ -58,6 +61,7 @@ public class TableFill implements Fill {
 				table.setSplitLate(false);
 				table.setSplitRows(true);
 				Font FontProve = new Font(bf, 10, 0);
+
 				// 表格数据填写
 				for (List<String> list : lists) {
 					for (int j = 0; j < column; j++) {

@@ -37,7 +37,7 @@ public class TableFill implements Fill {
 	/**
 	 * 空白页行数
 	 */
-	private static final int TOW_PAGE_ROW = 20;
+	private static final int TOW_PAGE_ROW = 15;
 
 	private static List<OrderPdfVO> orderPdfVOList = new ArrayList<>();
 
@@ -118,8 +118,6 @@ public class TableFill implements Fill {
 					}
 				}
 			}
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -56,7 +56,7 @@ public class TableFill implements Fill {
 
 		for (int i = 0; i < 30; i++) {
 			orderPdfVO = new OrderPdfVO();
-			orderPdfVO.setCol1("333" + Math.random());
+			orderPdfVO.setCol1(i + 1 + "");
 			orderPdfVO.setCol2("333" + Math.random());
 			orderPdfVO.setCol3("333" + Math.random());
 			orderPdfVO.setCol4("333" + Math.random());

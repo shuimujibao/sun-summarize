@@ -8,11 +8,7 @@ import org.xhtmlrenderer.layout.SharedContext;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +23,8 @@ public class JavaToPdfHtmlFreeMarker {
 //        ClassLoader.getSystemClassLoader().getResource("template/template.pdf").getPath();
 //    private static final String HTML = ClassLoader.getSystemClassLoader().getResource("template/template.html").getPath();
 //    private static final String FONT = ClassLoader.getSystemClassLoader().getResource("template/simhei.ttf").getPath();
-    private static final String HTML = "template/template.html";
-    private static final String FONT = "template/simhei.ttf";
+private static final String HTML = "template.html";
+	private static final String FONT = "simhei.ttf";
     private static final String FILE_PATH = "file://"+ClassLoader.getSystemClassLoader().getResource("template").getPath();
 
     private static Configuration freemarkerCfg = null;

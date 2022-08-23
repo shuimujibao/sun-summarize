@@ -1,8 +1,10 @@
 package pdf.method3;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.PdfCopy;
+import com.itextpdf.text.pdf.PdfImportedPage;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 import pdf.method3.fill.Fill;
 import pdf.method3.fill.TableFill;
 import pdf.method3.fill.WriteWordFill;
@@ -52,7 +54,9 @@ public class CreateETCPdf {
 			writeWordFill.action(dataSource, stamper);
 
 			// 表格内容填充
-			stamper.insertPage(5, reader.getPageSizeWithRotation(1));
+			for (int i = 0; i < 5; i++) {
+				stamper.insertPage(reader.getNumberOfPages() + 1, reader.getPageSizeWithRotation(1));
+			}
 
 			Fill tableFill = new TableFill();
 			tableFill.action(dataSource, stamper);

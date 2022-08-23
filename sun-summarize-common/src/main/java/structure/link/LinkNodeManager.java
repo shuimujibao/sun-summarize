@@ -31,13 +31,17 @@ public class LinkNodeManager {
 	 * @return LinkNodeManager
 	 */
 	public LinkNodeManager addNextNode(int nextVal) {
+
 		if (head == null) {
 			head = new ListNode(nextVal);
+			return this;
 		}
 		ListNode newNode = new ListNode(nextVal);
-
-		head.setNext(newNode);
-
+		ListNode nextNode = head;
+		while (nextNode.next != null) {
+			nextNode = nextNode.next;
+		}
+		nextNode.setNext(newNode);
 		return this;
 	}
 

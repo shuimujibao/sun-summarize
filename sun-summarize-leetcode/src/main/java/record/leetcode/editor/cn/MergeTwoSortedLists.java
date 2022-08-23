@@ -51,6 +51,8 @@ public class MergeTwoSortedLists {
 			.addNextNode(1)
 			.addNextNode(2)
 			.addNextNode(3)
+			.addNextNode(4)
+			.addNextNode(5)
 			.build();
 
 		LinkListUtil.printlnListNode("list1:", list1);

@@ -48,20 +48,20 @@ public class MergeTwoSortedLists {
 
 
 		ListNode list1 = LinkNodeManager.builder()
-			.addNextNode(1)
-			.addNextNode(2)
-			.addNextNode(3)
-			.addNextNode(4)
-			.addNextNode(5)
-			.build();
+										.addNextNode(1)
+										.addNextNode(2)
+										.addNextNode(3)
+										.addNextNode(4)
+										.addNextNode(5)
+										.build();
 
 		LinkListUtil.printlnListNode("list1:", list1);
 
 		ListNode list2 = LinkNodeManager.builder()
-			.addNextNode(1)
-			.addNextNode(2)
-			.addNextNode(3)
-			.build();
+										.addNextNode(1)
+										.addNextNode(2)
+										.addNextNode(3)
+										.build();
 
 		LinkListUtil.printlnListNode("list1:", list2);
 

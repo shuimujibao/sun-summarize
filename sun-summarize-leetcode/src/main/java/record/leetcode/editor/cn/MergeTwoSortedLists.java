@@ -50,16 +50,16 @@ public class MergeTwoSortedLists {
 		ListNode list1 = LinkNodeManager.builder()
 			.addNextNode(1)
 			.addNextNode(2)
-			.addNextNode(3)
+			.addNextNode(4)
 			.build();
 
 		LinkListUtil.printlnListNode("list1:", list1);
 
 		// 有序链表二
 		ListNode list2 = LinkNodeManager.builder()
+			.addNextNode(1)
+			.addNextNode(3)
 			.addNextNode(4)
-			.addNextNode(5)
-			.addNextNode(6)
 			.build();
 
 		LinkListUtil.printlnListNode("list1:", list2);
@@ -84,20 +84,36 @@ public class MergeTwoSortedLists {
 	 * }
 	 */
 	class Solution {
+		ListNode head = new ListNode(-1);
+
 		public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-			ListNode result = new ListNode(-1);
+
 			while (list1 != null || list2 != null) {
 				if (list1 != null && list1.val <= list2.val) {
-					result.next = list1;
+					insert(list1.val);
 					list1 = list1.next;
+				} else {
+					insert(list2.val);
+					list2 = list2.next;
 				}
-				result.next = list2;
-				list2 = list2.next;
 			}
+			return head.next;
+		}
 
-			return result.next;
+		public void insert(int val) {
+			//每次插入一条数据就要新建一个扣子
+			ListNode listNode = new ListNode(val);
+			if (head == null) {
+				head = listNode;
+				return;
+			}
+			ListNode tempNode = head;
+			//循环到链表的末尾
+			while (tempNode.next != null) {
+				tempNode = tempNode.next;
+			}
+			tempNode.next = listNode;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)
-
 }

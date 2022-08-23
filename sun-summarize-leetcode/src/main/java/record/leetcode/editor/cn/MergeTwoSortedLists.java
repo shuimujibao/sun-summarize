@@ -46,28 +46,29 @@ public class MergeTwoSortedLists {
 
 		Solution solution = new MergeTwoSortedLists().new Solution();
 
-
+		// 有序链表一
 		ListNode list1 = LinkNodeManager.builder()
-										.addNextNode(1)
-										.addNextNode(2)
-										.addNextNode(3)
-										.addNextNode(4)
-										.addNextNode(5)
-										.build();
+			.addNextNode(1)
+			.addNextNode(2)
+			.addNextNode(3)
+			.build();
 
 		LinkListUtil.printlnListNode("list1:", list1);
 
+		// 有序链表二
 		ListNode list2 = LinkNodeManager.builder()
-										.addNextNode(1)
-										.addNextNode(2)
-										.addNextNode(3)
-										.build();
+			.addNextNode(4)
+			.addNextNode(5)
+			.addNextNode(6)
+			.build();
 
 		LinkListUtil.printlnListNode("list1:", list2);
 
+		// 发起链表合并
 		ListNode result = solution.mergeTwoLists(list1, list2);
 
-		LinkListUtil.printlnListNode(result);
+		// 输出合并后链表
+		LinkListUtil.printlnListNode("合并后结果:", result);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

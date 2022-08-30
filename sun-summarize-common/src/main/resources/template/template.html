@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>神州租车ETC费用行程单</title>
+    <style>
+        @page {
+            /* 页面大小：示例中设置为A4纸的大小 */
+            size: 210mm 297mm;
+            margin: 15mm 15mm 15mm 15mm;
+        }
+
+        body {
+            width: 178mm;
+            font-family: SimHei;
+            font-size: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            border: 1px solid #000;
+            padding: 5px 5px;
+        }
+        tr td {
+            border: 1px solid #000;
+            padding: 5px 5px;
+        }
+
+        .nameDiv {
+            margin: 15px 0px;
+        }
+    </style>
+</head>
+<body>
+<img src="${filePath}/1.png" width="100px" alt="template"/>
+<img src="${filePath}/2.png" width="100px"  alt="template" align="right"/>
+<h2 style="text-align:center">神州租车ETC费用行程单</h2>
+<hr/>
+<div class="nameDiv">■  订单号：${no}</div>
+<div class="nameDiv">■  承租人姓名：${name}</div>
+<div class="nameDiv">■  申请时间：${date}</div>
+<div class="nameDiv">■  交易金额：${fee}</div>
+<table style="word-break: break-all">
+    <thead>
+    <th style="width: 100px">序号</th>
+    <th style="width: 150px">车牌号</th>
+    <th style="width: 150px">短租车型</th>
+    <th style="width: 100px">入站时间</th>
+    <th style="width: 300px">入口站名</th>
+    <th style="width: 100px">出站时间</th>
+    <th style="width: 300px">出口站名</th>
+    <th style="width: 100px">金额</th>
+    </thead>
+    <#list detailList as dl>
+        <tr>
+            <td>${dl_index+1}</td>
+            <td>${dl.vehicleNo}</td>
+            <td>${dl.shortModel}</td>
+            <td>${dl.inDate}</td>
+            <td>${dl.inName}</td>
+            <td>${dl.outDate}</td>
+            <td style="word-break: break-all;word-wrap:break-word;">${dl.outName}</td>
+            <td>${dl.fee}</td>
+        </tr>
+    </#list>
+</table>
+</body>
+</html>

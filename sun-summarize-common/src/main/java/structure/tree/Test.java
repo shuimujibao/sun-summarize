@@ -10,11 +10,11 @@ package structure.tree;
  */
 public class Test {
 	public static void main(String[] args) throws Exception {
-		TreeNode root = TreeNodeManager
-			.builder()
+		TreeNode root = TreeNodeManager.builder()
 			.addTreeNode(1, 2, 3)
 			.addTreeNode(3, null, 5)
-			.addTreeNode(2, 6, null).build();
+			.addTreeNode(2, 6, null)
+			.build();
 
 		TreeNodePrint.levelTraverse(root);
 	}

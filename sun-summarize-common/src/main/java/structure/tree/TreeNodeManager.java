@@ -30,7 +30,7 @@ public class TreeNodeManager {
 	 * @param rightVal 右子树
 	 * @return TreeNodeManager
 	 */
-	TreeNodeManager addTreeNode(Integer rootVal, Integer leftVal, Integer rightVal) throws Exception {
+	public TreeNodeManager addTreeNode(Integer rootVal, Integer leftVal, Integer rightVal) throws Exception {
 		if (rootVal == null) {
 			throw new Exception("rootVal不能为空");
 		}

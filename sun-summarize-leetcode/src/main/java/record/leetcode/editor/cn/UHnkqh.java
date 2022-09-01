@@ -49,8 +49,8 @@ package record.leetcode.editor.cn;
 // 👍 87 👎 0
 
 import structure.link.LinkNodeManager;
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
-import util.LinkListUtil;
 
 public class UHnkqh {
 	public static void main(String[] args) {
@@ -63,7 +63,7 @@ public class UHnkqh {
 
 		ListNode listNode = solution.reverseList(build);
 
-		LinkListUtil.printlnListNode(listNode);
+		LinkNodePrint.printlnListNode(listNode);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

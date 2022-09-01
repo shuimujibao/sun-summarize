@@ -38,8 +38,8 @@ package record.leetcode.editor.cn;
 // 👍 2626 👎 0
 
 import structure.link.LinkNodeManager;
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
-import util.LinkListUtil;
 
 public class MergeTwoSortedLists {
 	public static void main(String[] args) {
@@ -53,7 +53,7 @@ public class MergeTwoSortedLists {
 			.addNextNode(4)
 			.build();
 
-		LinkListUtil.printlnListNode("list1:", list1);
+		LinkNodePrint.printlnListNode("list1:", list1);
 
 		// 有序链表二
 		ListNode list2 = LinkNodeManager.builder()
@@ -62,13 +62,13 @@ public class MergeTwoSortedLists {
 			.addNextNode(4)
 			.build();
 
-		LinkListUtil.printlnListNode("list1:", list2);
+		LinkNodePrint.printlnListNode("list1:", list2);
 
 		// 发起链表合并
 		ListNode result = solution.mergeTwoLists(list1, list2);
 
 		// 输出合并后链表
-		LinkListUtil.printlnListNode("合并后结果:", result);
+		LinkNodePrint.printlnListNode("合并后结果:", result);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

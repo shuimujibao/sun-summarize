@@ -37,8 +37,8 @@ package record.leetcode.editor.cn;
 // 👍 1008 👎 0
 
 import structure.link.LinkNodeManager;
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
-import util.LinkListUtil;
 
 public class RemoveLinkedListElements {
 	public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class RemoveLinkedListElements {
 
 		ListNode listNode = solution.removeElements(build, 3);
 
-		LinkListUtil.printlnListNode(listNode);
+		LinkNodePrint.printlnListNode(listNode);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

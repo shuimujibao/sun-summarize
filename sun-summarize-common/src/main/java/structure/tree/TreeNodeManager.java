@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TreeOption
+ * 二叉树生成器
  *
- * @summary TreeOption
+ * @summary TreeNodeManager
  * @author: sunxiaoyu016
- * @Copyright (c) 2022, © 贝壳找房（北京）科技有限公司
- * @since: 2022年04月21日 17:47:00
+ * @Copyright (c) 2022, © 神州租车（北京）科技有限公司
+ * @since: 2022年09月01日 10:21:00
  */
-public class TreeOption {
+public class TreeNodeManager {
 
 	/**
 	 * 创建一棵树

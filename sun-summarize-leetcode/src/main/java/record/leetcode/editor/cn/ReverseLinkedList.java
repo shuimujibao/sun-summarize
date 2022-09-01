@@ -43,8 +43,8 @@ package record.leetcode.editor.cn;
 // Related Topics 递归 链表
 // 👍 2712 👎 0
 
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
-import util.LinkListUtil;
 
 public class ReverseLinkedList {
 	public static void main(String[] args) {
@@ -57,9 +57,9 @@ public class ReverseLinkedList {
 		head.setNext(head2);
 		head2.setNext(head3);
 		head3.setNext(head4);
-		LinkListUtil.printlnListNode(head);
+		LinkNodePrint.printlnListNode(head);
 		ListNode reverseListResult = solution.reverseList(head);
-		LinkListUtil.printlnListNode(reverseListResult);
+		LinkNodePrint.printlnListNode(reverseListResult);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

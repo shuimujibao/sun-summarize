@@ -16,8 +16,8 @@ package record.leetcode.editor.cn;
 // 👍 272 👎 0
 
 import structure.link.LinkNodeManager;
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
-import util.LinkListUtil;
 
 public class HeBingLiangGePaiXuDeLianBiaoLcof {
 	public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class HeBingLiangGePaiXuDeLianBiaoLcof {
 
 		ListNode result = solution.mergeTwoLists(l1, l2);
 
-		LinkListUtil.printlnListNode(result);
+		LinkNodePrint.printlnListNode(result);
 
 	}
 

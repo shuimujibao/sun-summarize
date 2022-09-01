@@ -33,7 +33,7 @@ package record.leetcode.editor.cn;
 
 import structure.link.LinkNodeManager;
 import structure.link.ListNode;
-import util.LinkListUtil;
+import structure.link.LinkNodePrint;
 
 public class ShanChuLianBiaoDeJieDianLcof {
 	public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class ShanChuLianBiaoDeJieDianLcof {
 
 		ListNode listNode = solution.deleteNode(build, 2);
 
-		LinkListUtil.printlnListNode(listNode);
+		LinkNodePrint.printlnListNode(listNode);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

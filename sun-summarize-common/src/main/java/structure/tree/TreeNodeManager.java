@@ -1,10 +1,5 @@
 package structure.tree;
 
-import org.apache.commons.collections4.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 二叉树生成器
  *
@@ -16,36 +11,65 @@ import java.util.List;
 public class TreeNodeManager {
 
 	/**
-	 * 创建一棵树
-	 *
-	 * @param arrays 数组
-	 * @return 树
+	 * 当前二叉树
 	 */
-	public static TreeNode createTree(int[] arrays) {
+	private TreeNode currentTreeNode;
 
-		// 当前树
-		TreeNode treeNode = new TreeNode();
+	/**
+	 * 实例化
+	 *
+	 * @return TreeNodeManager
+	 */
+	public static TreeNodeManager builder() {
+		return new TreeNodeManager();
+	}
 
-		// 将数组的值转化为树的节点便于操作
-		List<TreeNode> nodes = new ArrayList<>();
-		for (int value : arrays) {
-			nodes.add(new TreeNode(value));
+	/**
+	 * @param rootVal  根节点
+	 * @param leftVal  左子树
+	 * @param rightVal 右子树
+	 * @return TreeNodeManager
+	 */
+	TreeNodeManager addTreeNode(Integer rootVal, Integer leftVal, Integer rightVal) throws Exception {
+		if (rootVal == null) {
+			throw new Exception("rootVal不能为空");
 		}
-
-		if (CollectionUtils.isEmpty(nodes)) {
-			return treeNode;
+		TreeNode left = leftVal == null ? null : new TreeNode(leftVal);
+		TreeNode right = rightVal == null ? null : new TreeNode(rightVal);
+		if (currentTreeNode == null) {
+			currentTreeNode = new TreeNode(rootVal, left, right);
+			return this;
 		}
+		preOrderTraverse(currentTreeNode, rootVal, left, right);
+		return this;
+	}
 
-		// 获取树的根
-		TreeNode root = nodes.get(0);
-		nodes.remove(0);
-
-		while (CollectionUtils.isNotEmpty(nodes)) {
-
-			for (int i = 0; i < nodes.size(); i++) {
-			}
+	/**
+	 * 前序遍历二叉树
+	 *
+	 * @param root    二叉树
+	 * @param rootVal 根的值
+	 * @param left    左子树
+	 * @param right   右子树
+	 */
+	private void preOrderTraverse(TreeNode root, Integer rootVal, TreeNode left, TreeNode right) {
+		if (root == null) {
+			return;
 		}
+		if (root.val == rootVal) {
+			root.right = right;
+			root.left = left;
+		}
+		preOrderTraverse(root.left, rootVal, left, right);
+		preOrderTraverse(root.right, rootVal, left, right);
+	}
 
-		return treeNode;
+	/**
+	 * 获取当前二叉树
+	 *
+	 * @return ListNode
+	 */
+	public TreeNode build() {
+		return this.currentTreeNode;
 	}
 }

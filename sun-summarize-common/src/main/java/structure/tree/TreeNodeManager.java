@@ -25,6 +25,9 @@ public class TreeNodeManager {
 	}
 
 	/**
+	 * 当前方法不支持具有重复节点的树构成，
+	 * 若输入相同节点值，则挂载值先序遍历的第一个节点
+	 *
 	 * @param rootVal  根节点
 	 * @param leftVal  左子树
 	 * @param rightVal 右子树

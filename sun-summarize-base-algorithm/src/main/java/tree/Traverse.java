@@ -2,6 +2,7 @@ package tree;
 
 import structure.tree.TreeNode;
 import structure.tree.TreeNodeManager;
+import tree.breadth.BreadthTraversal;
 import tree.deep.DeepTraversal;
 
 /**
@@ -21,6 +22,8 @@ public class Traverse {
 			.addTreeNode(2, 6, 7)
 			.build();
 
-		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
+//		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
+
+		BreadthTraversal.levelTraversal(root);
 	}
 }

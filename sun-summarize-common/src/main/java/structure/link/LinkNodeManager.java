@@ -1,7 +1,7 @@
 package structure.link;
 
 /**
- * LinkNodeManager
+ * 链表生成器
  *
  * @summary LinkNodeManager
  * @author: sunxiaoyu016

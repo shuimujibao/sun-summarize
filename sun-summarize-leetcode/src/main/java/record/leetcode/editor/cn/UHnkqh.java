@@ -1,6 +1,7 @@
 package record.leetcode.editor.cn;
 
-//给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+//给定单链表的头节点 head ，请反转链表，并返回反转后的链表的头节点。
+//
 //
 //
 //
@@ -40,26 +41,29 @@ package record.leetcode.editor.cn;
 // 进阶：链表可以选用迭代或递归方式完成反转。你能否用两种方法解决这道题？
 //
 //
+//
+//
+//
+// 注意：本题与主站 206 题相同： https://leetcode-cn.com/problems/reverse-linked-list/
 // Related Topics 递归 链表
-// 👍 2712 👎 0
+// 👍 87 👎 0
 
+import structure.link.LinkNodeManager;
 import structure.link.LinkNodePrint;
 import structure.link.ListNode;
 
-public class ReverseLinkedList {
+public class UHnkqh {
 	public static void main(String[] args) {
-		Solution solution = new ReverseLinkedList().new Solution();
-		ListNode head = new ListNode(1);
-		ListNode head2 = new ListNode(2);
-		ListNode head3 = new ListNode(3);
-		ListNode head4 = new ListNode(4);
+		Solution solution = new UHnkqh().new Solution();
+		ListNode build = LinkNodeManager.builder()
+			.addNextNode(1)
+			.addNextNode(2)
+			.addNextNode(3)
+			.addNextNode(4).build();
 
-		head.setNext(head2);
-		head2.setNext(head3);
-		head3.setNext(head4);
-		LinkNodePrint.printlnListNode(head);
-		ListNode reverseListResult = solution.reverseList(head);
-		LinkNodePrint.printlnListNode(reverseListResult);
+		ListNode listNode = solution.reverseList(build);
+
+		LinkNodePrint.printlnListNode(listNode);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -76,30 +80,16 @@ public class ReverseLinkedList {
 	 */
 	class Solution {
 		public ListNode reverseList(ListNode head) {
-//			ListNode pre = new ListNode(-1);
-//			ListNode temp;
-//			while (head != null) {
-//				temp = head;
-//				head = head.next;
-//				temp.next = pre.next;
-//				pre.next = temp;
-//			}
-//			return pre.next;
-			// 头结点
-			ListNode pre = new ListNode(-1);
-			// 临时存储值
+
+			ListNode preNode = new ListNode(-1);
 			ListNode temp;
 			while (head != null) {
-				// 记录头结点后面的值
-				temp = pre.next;
-				// 插入刚遍历到的链表值
-				pre.next = head;
-				// 遍历下一个结点
+				temp = preNode.next;
+				preNode.next = head;
 				head = head.next;
-				// 将原来的结点值赋值
-				pre.next.next = temp;
+				preNode.next.next = temp;
 			}
-			return pre.next;
+			return preNode.next;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

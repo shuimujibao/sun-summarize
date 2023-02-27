@@ -1,16 +1,14 @@
-package util;
-
-import structure.link.ListNode;
+package structure.link;
 
 /**
- * 链表工具类
+ * 链表打印
  *
- * @summary LinkListUtil
+ * @summary LinkNodePrint
  * @author: sunxiaoyu016
  * @Copyright (c) 2022, © 神州租车（北京）科技有限公司
  * @since: 2022年08月23日 15:12:00
  */
-public class LinkListUtil {
+public class LinkNodePrint {
 
 	/**
 	 * 链表打印

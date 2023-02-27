@@ -27,7 +27,6 @@ public class TreeNode {
 	 */
 	public TreeNode right;
 
-
 	/**
 	 * 初始化
 	 *
@@ -38,8 +37,11 @@ public class TreeNode {
 	}
 
 	/**
-	 * 无参构造器
+	 * 节点构造器
 	 */
-	public TreeNode() {
+	TreeNode(int val, TreeNode left, TreeNode right) {
+		this.val = val;
+		this.right = right;
+		this.left = left;
 	}
 }

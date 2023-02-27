@@ -9,4 +9,5 @@ package jingdong.first;
  * @since: 2022年05月07日 15:48:00
  */
 public class WriteExam {
+
 }

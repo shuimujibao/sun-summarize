@@ -1,4 +1,4 @@
-package alibaba.first;
+package alibaba.first.thread;
 
 /**
  * 笔试题

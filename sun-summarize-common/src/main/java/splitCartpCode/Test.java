@@ -48,7 +48,7 @@ public class Test {
 			}
 
 			// 参数处理
-			String carTpCode = stringBuilder.toString().substring(0, stringBuilder.length() - 1);
+			String carTpCodes = stringBuilder.toString().substring(0, stringBuilder.length() - 1);
 			desc = String.format("'%s'", desc);
 
 			// 系统参数
@@ -58,7 +58,7 @@ public class Test {
 			String current_time = String.format("'%s'", DateUtils.convertDateToString(new Date()));
 
 			// 拼接sql
-			String sql = MessageFormat.format(ConstantCarTp.SQL_TEMPLATE, orderSource, receiptType, payType, paymentChannel, carTpCode, desc,
+			String sql = MessageFormat.format(ConstantCarTp.SQL_TEMPLATE, orderSource, receiptType, payType, paymentChannel, carTpCodes, desc,
 				status, create_emp, current_time, modify_emp, current_time);
 
 			System.out.println(sql);

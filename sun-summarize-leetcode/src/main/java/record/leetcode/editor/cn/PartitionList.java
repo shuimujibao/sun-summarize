@@ -53,7 +53,7 @@ public class PartitionList{
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-
+		return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -53,7 +53,28 @@ public class PartitionList{
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-		return null;
+
+    	ListNode smlDummy = new ListNode(0);
+		ListNode bigDummy = new ListNode(0);
+
+		ListNode sml = smlDummy;
+		ListNode big = bigDummy;
+
+		while (head != null) {
+			if (head.val < x) {
+				sml.next = head;
+				sml = sml.next;
+			} else {
+				big.next = head;
+				big = big.next;
+			}
+			head = head.next;
+		}
+
+		sml.next = bigDummy.next;
+		big.next = null;
+
+		return smlDummy.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

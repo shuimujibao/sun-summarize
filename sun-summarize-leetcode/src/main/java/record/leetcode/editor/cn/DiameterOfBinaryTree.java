@@ -26,6 +26,7 @@ import structure.tree.TreeNode;
 
 public class DiameterOfBinaryTree {
 	public static void main(String[] args) {
+
 		Solution solution = new DiameterOfBinaryTree().new Solution();
 
 	}

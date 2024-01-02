@@ -22,8 +22,8 @@ public class Traverse {
 			.addTreeNode(2, 6, 7)
 			.build();
 
-//		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
+		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
 
-		BreadthTraversal.levelTraversal(root);
+//		BreadthTraversal.levelTraversal(root);
 	}
 }

@@ -57,6 +57,8 @@ package record.leetcode.editor.cn;
 // Related Topics 广度优先搜索 数组 动态规划
 // 👍 101 👎 0
 
+import java.util.Arrays;
+
 public class GaM7Ch {
 	public static void main(String[] args) {
 		Solution solution = new GaM7Ch().new Solution();
@@ -70,6 +72,28 @@ public class GaM7Ch {
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
+//		public int coinChange(int[] coins, int amount) {
+//			if (coins.length == 0) {
+//				return -1;
+//			}
+//
+//			//  初始化
+//			int[] dp = new int[amount + 1];
+//			dp[0] = 0;
+//
+//			// 动态规划自底向上
+//			for (int i = 1; i <= amount; i++) {
+//				int min = Integer.MAX_VALUE;
+//				for (int coin : coins) {
+//					if (i - coin >= 0 && dp[i - coin] < min) {
+//						min = dp[i - coin] + 1;
+//					}
+//				}
+//				dp[i] = min;
+//			}
+//			return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+//		}
+
 		public int coinChange(int[] coins, int amount) {
 			if (coins.length == 0) {
 				return -1;
@@ -77,19 +101,19 @@ public class GaM7Ch {
 
 			//  初始化
 			int[] dp = new int[amount + 1];
+			Arrays.fill(dp,amount +1);
 			dp[0] = 0;
 
-			// 动态规划自底向上
-			for (int i = 1; i <= amount; i++) {
-				int min = Integer.MAX_VALUE;
+			for (int i = 0; i < dp.length; i++) {
 				for (int coin : coins) {
-					if (i - coin >= 0 && dp[i - coin] < min) {
-						min = dp[i - coin] + 1;
+					if (i - coin < 0) {
+						continue;
 					}
+					dp[i] = Math.min(dp[i], dp[i - coin] + 1);
 				}
-				dp[i] = min;
+
 			}
-			return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+			return dp[amount] == amount + 1 ? -1 : dp[amount];
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

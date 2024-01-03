@@ -47,52 +47,38 @@ package record.leetcode.editor.cn;
 // Related Topics 数组 二分查找 动态规划
 // 👍 2545 👎 0
 
+import java.util.Arrays;
+
 public class LongestIncreasingSubsequence {
 	public static void main(String[] args) {
 		Solution solution = new LongestIncreasingSubsequence().new Solution();
+
+		int[] arr = new int[]{1,9,3,4};
+		solution.lengthOfLIS(arr);
 
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int lengthOfLIS(int[] nums) {
-			//    	==========解法一===========
-//		if (nums.length == 0) {
-//			return 0;
-//		}
-//		int[] dp = new int[nums.length];
-//		dp[0] = 1;
-//		int maxans = 1;
-//		for (int i = 1; i < nums.length; i++) {
-//			dp[i] = 1;
-//			for (int j = 0; j < i; j++) {
-//				if (nums[i] > nums[j]) {
-//					dp[i] = Math.max(dp[i], dp[j] + 1);
-//				}
-//			}
-//			maxans = Math.max(maxans, dp[i]);
-//		}
-//		return maxans;
-
-			//    	==========解法二===========
-
-			if (nums.length == 0) {
-				return 0;
-			}
-
 			int[] dp = new int[nums.length];
-			dp[0] = 1;
-			int maxAns = 1;
 
-			for (int i = 1; i < nums.length; i++) {
-				for (int j = i + 1; j < nums.length; j++) {
-					if (nums[j] > nums[i]) {
-						dp[i] = dp[i - 1] + 1;
+			Arrays.fill(dp, 1);
+
+			for (int i = 0; i < nums.length; i++) {
+				for (int j = 0; j < i; j++) {
+					if (nums[i] > nums[j]) {
+						dp[i] = Math.max(dp[i], dp[j] + 1);
 					}
-					maxAns = Math.max(maxAns, dp[i]);
 				}
 			}
-			return maxAns;
+
+			int maxLength = 0;
+
+			for (int value : dp) {
+				maxLength = Math.max(maxLength, value);
+			}
+			return maxLength;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

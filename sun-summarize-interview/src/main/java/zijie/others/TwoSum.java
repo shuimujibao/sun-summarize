@@ -113,6 +113,10 @@ public class TwoSum {
 			s2 = s2.substring(0, s2.length() - 1);
 		}
 
+		if (currentValue != 0) {
+			stack.add(currentValue);
+		}
+
 		StringBuilder result = new StringBuilder();
 		while (!stack.isEmpty()) {
 			result.append(stack.pop());

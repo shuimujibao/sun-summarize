@@ -53,7 +53,7 @@ public class LongestIncreasingSubsequence {
 	public static void main(String[] args) {
 		Solution solution = new LongestIncreasingSubsequence().new Solution();
 
-		int[] arr = new int[]{0,1,0,3,2,3};
+		int[] arr = new int[]{10,9,2,5,3,7,10};
 		solution.lengthOfLIS(arr);
 
 	}

@@ -102,7 +102,7 @@ public class SwapNodesInPairs {
 			head.next.next = third;
 
 			// 继续从第三个节点开始交换
-			// 递归返回的值，递归前的链表中
+			// 递归返回的值，接入的递归前的链表中
 			head.next.next = swap(head.next.next);
 
 			return head;

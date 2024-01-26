@@ -32,7 +32,7 @@ public class TreeNode {
 	 *
 	 * @param val 根节点值
 	 */
-	TreeNode(int val) {
+	public TreeNode(int val) {
 		this.val = val;
 	}
 

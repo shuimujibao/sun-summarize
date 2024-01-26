@@ -33,6 +33,10 @@ public class TreeNodePrint {
 	 * @param root 当前二叉树
 	 */
 	public static void levelTraverse(TreeNode root) {
+		System.out.println();
+		System.out.println("==========================================");
+		treeHeightNow = 0;
+		treeHeight = 0;
 		if (root == null) {
 			return;
 		}

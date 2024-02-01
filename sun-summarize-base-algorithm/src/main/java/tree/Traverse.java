@@ -2,6 +2,7 @@ package tree;
 
 import structure.tree.TreeNode;
 import structure.tree.TreeNodeManager;
+import structure.tree.TreeNodePrint;
 import tree.breadth.BreadthTraversal;
 import tree.deep.DeepTraversal;
 
@@ -22,7 +23,15 @@ public class Traverse {
 			.addTreeNode(2, 6, 7)
 			.build();
 
+
+		TreeNodePrint.levelTraverse(root);
+		System.out.println("");
+		System.out.println("=====");
 		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
+		System.out.println("=====");
+		DeepTraversal.deepTraversal(DeepTraversal.POST_ORDER_TRAVERSAL,root);
+		System.out.println("=====");
+		DeepTraversal.deepTraversal(DeepTraversal.IN_ORDER_TRAVERSAL,root);
 
 //		BreadthTraversal.levelTraversal(root);
 	}

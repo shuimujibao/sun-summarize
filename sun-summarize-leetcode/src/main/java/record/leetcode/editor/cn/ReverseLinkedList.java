@@ -43,22 +43,27 @@ package record.leetcode.editor.cn;
 // Related Topics 递归 链表
 // 👍 2712 👎 0
 
+import structure.link.LinkNodeManager;
 import structure.link.LinkNodePrint;
 import structure.link.ListNode;
+
+import java.util.Objects;
 
 public class ReverseLinkedList {
 	public static void main(String[] args) {
 		Solution solution = new ReverseLinkedList().new Solution();
-		ListNode head = new ListNode(1);
-		ListNode head2 = new ListNode(2);
-		ListNode head3 = new ListNode(3);
-		ListNode head4 = new ListNode(4);
 
-		head.setNext(head2);
-		head2.setNext(head3);
-		head3.setNext(head4);
-		LinkNodePrint.printlnListNode(head);
-		ListNode reverseListResult = solution.reverseList(head);
+		ListNode head = LinkNodeManager.builder()
+			.addNextNode(1)
+			.addNextNode(2)
+			.addNextNode(3)
+			.addNextNode(4)
+			.addNextNode(5)
+			.build();
+
+		ListNode reverseListResult = solution.reverseList2(head);
+
+		System.out.println("======反转后结果======");
 		LinkNodePrint.printlnListNode(reverseListResult);
 	}
 
@@ -75,31 +80,67 @@ public class ReverseLinkedList {
 	 * }
 	 */
 	class Solution {
+		/**
+		 * 反转链表（递归）
+		 * <p>
+		 * 第一次：1->2->3->4->5
+		 * <p>
+		 * 第二次：2->1->3->4->5
+		 * <p>
+		 * 第三次：3->2->1->4->5
+		 * <p>
+		 * ...
+		 *
+		 * @param head 头节点
+		 * @return ListNode
+		 */
 		public ListNode reverseList(ListNode head) {
-//			ListNode pre = new ListNode(-1);
-//			ListNode temp;
-//			while (head != null) {
-//				temp = head;
-//				head = head.next;
-//				temp.next = pre.next;
-//				pre.next = temp;
-//			}
-//			return pre.next;
-			// 头结点
-			ListNode pre = new ListNode(-1);
-			// 临时存储值
-			ListNode temp;
-			while (head != null) {
-				// 记录头结点后面的值
-				temp = pre.next;
-				// 插入刚遍历到的链表值
-				pre.next = head;
-				// 遍历下一个结点
-				head = head.next;
-				// 将原来的结点值赋值
-				pre.next.next = temp;
+
+			// 递归中止条件
+			if (Objects.isNull(head.next)) {
+				return head;
 			}
-			return pre.next;
+
+			// 当前节点的下一个节点
+			ListNode lastNode = reverseList(head.next);
+			System.out.println(lastNode);
+//			head.next.next = head;
+//			head.next = null;
+			return lastNode;
+		}
+
+		/**
+		 * 反转链表
+		 * <p>非递归</p>
+		 *
+		 * @param head 头节点
+		 * @return ListNode
+		 */
+		public ListNode reverseList2(ListNode head) {
+
+			ListNode cur = head;
+
+			ListNode pre = null;
+
+			while (cur != null) {
+
+				// 记录当前节点之后的节点，用于继续遍历
+				ListNode temp = cur.next;
+
+				System.out.println("记录当前节点之后的节点，用于继续遍历temp");
+				LinkNodePrint.printlnListNode(temp);
+
+				// 当前节点的下一个节点，指向前一个节点
+				cur.next = pre;
+
+				pre = cur;
+
+				// 继续遍历
+				cur = temp;
+			}
+
+
+            return pre;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

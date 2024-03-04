@@ -21,6 +21,7 @@ public class KthNodeFromEndOfListLcci {
 	public static void main(String[] args) {
 		Solution solution = new KthNodeFromEndOfListLcci().new Solution();
 
+
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

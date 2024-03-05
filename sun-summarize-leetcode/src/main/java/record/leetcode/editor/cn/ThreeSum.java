@@ -47,46 +47,97 @@ public class ThreeSum {
 	public static void main(String[] args) {
 		Solution solution = new ThreeSum().new Solution();
 
+//		int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
+
+
+		int[] nums = new int[]{-2, 0, 0, 2, 2};
+
+		solution.threeSum(nums);
+
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
+//		public List<List<Integer>> threeSum(int[] nums) {
+//			List<List<Integer>> result = new ArrayList<>();
+//			Arrays.sort(nums);
+//			int len = nums.length;
+//			for (int i = 0; i < len; i++) {
+//				if (nums[i] > 0) {
+//					return result;
+//				}
+//
+//				if (i > 0 && nums[i] == nums[i - 1]) {
+//					continue;
+//				}
+//				int l = i + 1;
+//				int r = len - 1;
+//				while (l < r) {
+//					int t = nums[i] + nums[l] + nums[r];
+//					if (t == 0) {
+//						List<Integer> list = new ArrayList<>();
+//						list.add(nums[i]);
+//						list.add(nums[l]);
+//						list.add(nums[r]);
+//						result.add(list);
+//
+//						while (l < r && nums[l + 1] == nums[l]) {
+//							l++;
+//						}
+//						while (l < r && nums[r - 1] == nums[r]) {
+//							r--;
+//						}
+//						++l;
+//						--r;
+//
+//					} else if (t > 0) {
+//						r--;
+//					} else {
+//						l++;
+//					}
+//				}
+//			}
+//			return result;
+//		}
+
+
 		public List<List<Integer>> threeSum(int[] nums) {
+
 			List<List<Integer>> result = new ArrayList<>();
+
 			Arrays.sort(nums);
-			int len = nums.length;
-			for (int i = 0; i < len; i++) {
-				if (nums[i] > 0) {
-					return result;
-				}
+
+			for (int i = 0; i < nums.length; i++) {
 
 				if (i > 0 && nums[i] == nums[i - 1]) {
 					continue;
 				}
-				int l = i + 1;
-				int r = len - 1;
-				while (l < r) {
-					int t = nums[i] + nums[l] + nums[r];
-					if (t == 0) {
+
+				int leftPoint = i + 1;
+				int rightPoint = nums.length - 1;
+
+				while (leftPoint < rightPoint) {
+
+					int sum = nums[i] + nums[leftPoint] + nums[rightPoint];
+
+					if (sum == 0) {
 						List<Integer> list = new ArrayList<>();
 						list.add(nums[i]);
-						list.add(nums[l]);
-						list.add(nums[r]);
+						list.add(nums[leftPoint]);
+						list.add(nums[rightPoint]);
 						result.add(list);
-
-						while (l < r && nums[l + 1] == nums[l]) {
-							l++;
+						while (leftPoint< rightPoint && nums[leftPoint+1] == nums[leftPoint]) {
+							leftPoint++;
 						}
-						while (l < r && nums[r - 1] == nums[r]) {
-							r--;
+						while (leftPoint< rightPoint && nums[rightPoint-1] == nums[rightPoint]){
+							rightPoint--;
 						}
-						++l;
-						--r;
-
-					} else if (t > 0) {
-						r--;
+						leftPoint++;
+						rightPoint--;
+					} else if (sum < 0) {
+						leftPoint++;
 					} else {
-						l++;
+						rightPoint--;
 					}
 				}
 			}

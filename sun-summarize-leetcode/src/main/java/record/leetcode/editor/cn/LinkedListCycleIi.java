@@ -60,9 +60,6 @@ package record.leetcode.editor.cn;
 
 import structure.link.ListNode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class LinkedListCycleIi {
 	public static void main(String[] args) {
 		Solution solution = new LinkedListCycleIi().new Solution();
@@ -84,17 +81,19 @@ public class LinkedListCycleIi {
 	 */
 	public class Solution {
 		public ListNode detectCycle(ListNode head) {
-			ListNode pos = head;
-			Set<ListNode> visited = new HashSet<>();
-			while (pos != null) {
-				if (visited.contains(pos)) {
-					return pos;
-				} else {
-					visited.add(pos);
-				}
-				pos = pos.next;
+			ListNode fast = head, slow = head;
+			while (true) {
+				if (fast == null || fast.next == null) return null;
+				fast = fast.next.next;
+				slow = slow.next;
+				if (fast == slow) break;
 			}
-			return null;
+			fast = head;
+			while (slow != fast) {
+				slow = slow.next;
+				fast = fast.next;
+			}
+			return fast;
 		}
 	}
 }

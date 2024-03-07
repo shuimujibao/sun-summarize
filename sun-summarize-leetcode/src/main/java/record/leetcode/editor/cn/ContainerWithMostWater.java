@@ -47,14 +47,30 @@ public class ContainerWithMostWater {
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int maxArea(int[] height) {
-			int i = 0;
-			int j = height.length - 1;
+			// 设置左右指针
+			int leftPoint = 0;
+			int rightPoint = height.length - 1;
+
+			// 面积
 			int res = 0;
-			while (i < j) {
-				res = height[i] < height[j] ?
-					Math.max(res, (j - i) * height[i++]):
-					Math.max(res, (j - i) * height[j--]);
+
+			// 左右两个指针，较小高度向内收窄，并不断更新最大面积
+			while (leftPoint < rightPoint) {
+				// 容器宽度
+				int widthNum = rightPoint - leftPoint;
+				// 容器高度
+				int heightNum = Math.min(height[leftPoint], height[rightPoint]);
+				// 更新面积
+				res = Math.max(widthNum * heightNum, res);
+
+				// 移动指针
+				if (height[leftPoint] < height[rightPoint]) {
+					leftPoint++;
+				} else {
+					rightPoint--;
+				}
 			}
+
 			return res;
 		}
 	}

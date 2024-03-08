@@ -90,7 +90,7 @@ public class MergeTwoSortedLists {
 			ListNode dum = new ListNode(0);
 			// 当前节点
 			ListNode cur = dum;
-			// 双指针便利
+			// 双指针遍历
 			while (list1 != null && list2 != null) {
 				if (list1.val < list2.val) {
 					cur.next = list1;

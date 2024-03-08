@@ -40,11 +40,19 @@ package record.leetcode.editor.cn;
 // Related Topics 树 深度优先搜索 二叉树 👍 597 👎 0
 
 import structure.tree.TreeNode;
+import structure.tree.TreeNodeManager;
+import structure.tree.TreeNodePrint;
 
 public class ErChaShuDeZuiJinGongGongZuXianLcof {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Solution solution = new ErChaShuDeZuiJinGongGongZuXianLcof().new Solution();
+		TreeNode root1 = TreeNodeManager.builder()
+			.addTreeNode(1, 3, 2)
+			.addTreeNode(3, 5, 6)
+			.addTreeNode(2, 7, 8)
+			.build();
 
+		TreeNodePrint.levelTraverse(root1);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

@@ -51,6 +51,7 @@ import structure.link.LinkNodeManager;
 import structure.link.LinkNodePrint;
 import structure.link.ListNode;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -117,26 +118,42 @@ public class MergeKSortedLists {
 		 */
 		public ListNode mergeKLists(ListNode[] lists) {
 
-			// 队列存储
-			LinkedBlockingQueue<ListNode> priorityQueue = new LinkedBlockingQueue<>();
+//			// 队列存储
+//			LinkedBlockingQueue<ListNode> priorityQueue = new LinkedBlockingQueue<>();
+//
+//			// 遍历链表集合
+//			for (ListNode listNode : lists) {
+//				if (listNode == null) {
+//					continue;
+//				}
+//				priorityQueue.add(listNode);
+//				// 当队列中链表数为2时，则开始合并，并将合并后的链表重新放回队列中
+//				if (priorityQueue.size() == 2) {
+//					ListNode list1 = priorityQueue.poll();
+//					ListNode list2 = priorityQueue.poll();
+//					ListNode mergeList = mergeTwoLists(list1, list2);
+//					priorityQueue.add(mergeList);
+//				}
+//			}
+//
+//			// 此时队列中只有一个链表
+//			return priorityQueue.poll();
 
-			// 遍历链表集合
-			for (ListNode listNode : lists) {
-				if (listNode == null) {
-					continue;
-				}
-				priorityQueue.add(listNode);
-				// 当队列中链表数为2时，则开始合并，并将合并后的链表重新放回队列中
-				if (priorityQueue.size() == 2) {
-					ListNode list1 = priorityQueue.poll();
-					ListNode list2 = priorityQueue.poll();
-					ListNode mergeList = mergeTwoLists(list1, list2);
-					priorityQueue.add(mergeList);
-				}
+			if (lists.length == 0) {
+				return null;
 			}
 
-			// 此时队列中只有一个链表
-			return priorityQueue.poll();
+			if (lists.length == 1) {
+				return lists[0];
+			}
+
+			int middle = lists.length / 2;
+
+			ListNode[] list1 = Arrays.copyOfRange(lists, 0, middle);
+
+			ListNode[] list2 = Arrays.copyOfRange(lists, middle, lists.length);
+
+			return mergeTwoLists(mergeKLists(list1), mergeKLists(list2));
 		}
 
 		/**

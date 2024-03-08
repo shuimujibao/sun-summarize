@@ -80,8 +80,8 @@ public class LinkedListCycle {
 		public boolean hasCycle(ListNode head) {
 			if (head == null) {
 				return false;
-
 			}
+
 			ListNode low = head;
 			ListNode fast = head.next;
 
@@ -92,6 +92,7 @@ public class LinkedListCycle {
 				low = low.next;
 				fast = fast.next.next;
 			}
+
 			return false;
 		}
 	}

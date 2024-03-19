@@ -137,7 +137,7 @@ mysql中or关键字查询优化
 -------
 # mysql中数据量过大时，如何进行分页查询
 ```
-select * from t_score where a_score != 0 or b_score != 0 order by create_time limit 10,20
+select * from t_score where a_score != 0 or b_score != 0 order by create_time limiting 10,20
 ```
 
 # 什么会导致数据库主从延迟，如何处理

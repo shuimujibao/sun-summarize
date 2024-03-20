@@ -56,6 +56,7 @@ public class MaximumSubarray {
 				return 0;
 			}
 
+
 			int preNum = nums[0];
 
 			int maxSum = preNum;

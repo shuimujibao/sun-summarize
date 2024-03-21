@@ -74,10 +74,18 @@ public class MaximumProductSubarray2 {
 			// 乘积最大值
 			int maxValue = nums[0];
 
+			// 临界值处理,只有一个元素
+			if (nums.length == 1) {
+				return maxValue;
+			}
+
 			// 状态记录
 			int[] dpMax = new int[nums.length];
+			dpMax[0] = nums[0];
 			int[] dpMin = new int[nums.length];
+			dpMin[0] = nums[0];
 
+			// 动态规划
 			for (int i = 1; i < nums.length; i++) {
 				dpMax[i] = Math.max(Math.max(dpMax[i - 1] * nums[i], dpMin[i - 1] * nums[i]), nums[i]);
 				dpMin[i] = Math.min(Math.min(dpMax[i - 1] * nums[i], dpMin[i - 1] * nums[i]), nums[i]);

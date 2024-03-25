@@ -94,6 +94,7 @@ public class RemoveElement {
 				}
 			}
 
+
 			return nums.length - count;
 
 //			int left = 0;

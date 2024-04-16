@@ -47,6 +47,8 @@ package record.leetcode.editor.cn;
 
 import structure.tree.TreeNode;
 
+import java.util.Objects;
+
 public class PathSum {
 	public static void main(String[] args) {
 		Solution solution = new PathSum().new Solution();
@@ -77,11 +79,16 @@ public class PathSum {
 				return false;
 			}
 
-			if (root.left == null && root.right == null) {
-				return root.val == targetSum;
+			if (root.left == null && root.right == null && targetSum == 0) {
+				return true;
 			}
 
-			return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
+			int currLeft = Objects.isNull(root.left) ? 0 : root.left.val;
+			int currRight = Objects.isNull(root.right) ? 0 : root.right.val;
+
+			hasPathSum(root.left, targetSum - currLeft);
+			hasPathSum(root.right, targetSum - currRight);
+			return false;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

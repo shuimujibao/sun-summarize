@@ -20,11 +20,25 @@ package record.leetcode.editor.cn;
 // 👍 1263 👎 0
 
 import structure.tree.TreeNode;
+import structure.tree.TreeNodeManager;
+import structure.tree.TreeNodePrint;
 
 public class MaximumDepthOfBinaryTree {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Solution solution = new MaximumDepthOfBinaryTree().new Solution();
 
+		TreeNode root = TreeNodeManager.builder()
+			.addTreeNode(3, 9, 20)
+			.addTreeNode(20, 15, 7)
+			.build();
+
+		TreeNodePrint.levelTraverse(root);
+
+		System.out.println();
+
+		System.out.println("======");
+
+		System.out.println(solution.maxDepth(root));
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

@@ -52,17 +52,22 @@ public class MaximumSubarray {
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int maxSubArray(int[] nums) {
+
+			// 非空判断
 			if (nums == null || nums.length == 0) {
 				return 0;
 			}
 
-			int preNum = nums[0];
+			// 最大和
+			int maxSum = nums[0];
 
-			int maxSum = preNum;
+			// 状态记录
+			int[] dp = new int[nums.length];
+			dp[0] = nums[0];
 
 			for (int i = 1; i < nums.length; i++) {
-				preNum = preNum > 0 ? preNum + nums[i] : nums[i];
-				maxSum = Math.max(preNum, maxSum);
+				dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+				maxSum = Math.max(maxSum, dp[i]);
 			}
 
 			return maxSum;

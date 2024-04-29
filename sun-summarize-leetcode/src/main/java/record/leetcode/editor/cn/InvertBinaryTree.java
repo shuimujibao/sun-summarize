@@ -41,11 +41,25 @@ package record.leetcode.editor.cn;
 // 👍 1392 👎 0
 
 import structure.tree.TreeNode;
+import structure.tree.TreeNodeManager;
+import structure.tree.TreeNodePrint;
 
 public class InvertBinaryTree {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Solution solution = new InvertBinaryTree().new Solution();
 
+		TreeNode root1 = TreeNodeManager.builder()
+			.addTreeNode(1, 3, 2)
+			.addTreeNode(3, 6, 9)
+			.addTreeNode(2, 7, 8)
+			.build();
+
+		TreeNodePrint.levelTraverse(root1);
+
+
+		TreeNode treeNode = solution.invertTree(root1);
+
+		TreeNodePrint.levelTraverse(treeNode);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

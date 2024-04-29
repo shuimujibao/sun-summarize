@@ -18,6 +18,30 @@
             <artifactId>sun-summarize-common</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <!-- google guava 工具类 -->
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.0.1-jre</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+
+        <!-- 工具类 hutool -->
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.14</version>
+        </dependency>
+
     </dependencies>
 
 </project>

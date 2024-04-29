@@ -74,6 +74,7 @@ public class Test {
 
 			// 当运动员比赛耗时
 			int randomNum = ThreadLocalRandom.current().nextInt(100);
+			System.out.println("运动员：" + Thread.currentThread() + "耗时：" + randomNum);
 
 			// 当前运动员比赛结束
 			countDownLatchOver.countDown();

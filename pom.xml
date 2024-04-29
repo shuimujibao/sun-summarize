@@ -19,13 +19,14 @@
         <module>sun-summarize-spring-cloud</module>
         <module>sun-summarize-dubbo</module>
         <module>sun-summarize-sub-table</module>
+        <module>sun-summarize-rocketmq</module>
     </modules>
 
 
     <properties>
         <java.version>1.8</java.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <spring-boot-starter-test.version>2.1.11.RELEASE</spring-boot-starter-test.version>
+        <spring-boot-starter-Test.version>2.1.11.RELEASE</spring-boot-starter-Test.version>
         <lombok.version>1.18.10</lombok.version>
         <apache.commons.version>4.1</apache.commons.version>
     </properties>
@@ -47,9 +48,9 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter-test.version}</version>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-Test</artifactId>
+            <version>${spring-boot-starter-Test.version}</version>
+            <scope>Test</scope>
         </dependency>
 
         <dependency>

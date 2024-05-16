@@ -1,5 +1,7 @@
 package record;
 
+import structure.link.LinkNodeManager;
+import structure.link.LinkNodePrint;
 import structure.link.ListNode;
 
 import java.util.Objects;
@@ -48,17 +50,35 @@ import java.util.Objects;
 public class AddTwoNumbers {
 
 	public static void main(String[] args) {
+		ListNode list1 = LinkNodeManager.builder()
+			.addNextNode(2)
+			.addNextNode(4)
+			.addNextNode(3)
+			.build();
+		LinkNodePrint.printlnListNode("list1:",list1);
 
+		ListNode list2 = LinkNodeManager.builder()
+			.addNextNode(5)
+			.addNextNode(6)
+			.addNextNode(4)
+			.build();
+		LinkNodePrint.printlnListNode("list2:",list2);
+
+		AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+
+		ListNode listNode = addTwoNumbers.addTwoNumbers(list1, list2);
+
+		LinkNodePrint.printlnListNode("listNode:",listNode);
 	}
 
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
 		ListNode pre = new ListNode(-1);
 
-		ListNode sumNode = pre;
+		ListNode currentNode = pre;
 
 		// 进位
-		int current = 0;
+		int carry = 0;
 
 		while (l1 != null || l2 != null) {
 
@@ -66,15 +86,20 @@ public class AddTwoNumbers {
 			int l2Value = Objects.isNull(l2) ? 0 : l2.val;
 
 			// 商
-			sumNode.val = (l1Value + l2Value + current) / 10;
+			int sum = (l1Value + l2Value + carry) % 10;
+			currentNode.next = new ListNode(sum);
 
 			// 余数
-			current = (l1Value + l2Value) % 10;
+			carry = (l1Value + l2Value) / 10;
 
-			sumNode = sumNode.next;
+			currentNode = currentNode.next;
 
 			l1 = Objects.isNull(l1) ? null : l1.next;
 			l2 = Objects.isNull(l2) ? null : l2.next;
+		}
+
+		if (carry == 1) {
+			currentNode.next = new ListNode(1);
 		}
 
 		return pre.next;

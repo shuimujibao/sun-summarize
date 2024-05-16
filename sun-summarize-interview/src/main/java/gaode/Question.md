@@ -6,7 +6,7 @@
 
 #### 二、spring相关
 ##### 1、ServiceOne类，其对应存在三个bean, serviceA,serviceB,serviceC，此时在ServiceTwo类，使用@Autowired注入serviceA，是否可以成功，解决方案是啥
-##### 2、SpringBean初始化中，后置处理器PostProcess与InitializingBean加载顺序是啥-[解读](https://segmentfault.com/a/1190000014105687)
+##### 2、SpringBean初始化中，后置处理器BeanPostProcess与InitializingBean加载顺序是啥-[解读](https://blog.csdn.net/Asa_Prince/article/details/118342171)
 ##### 3、ServiceOne类，存在构造函数ServiceOne(A,B),ServiceOne(A,C),ServiceOne(B,C),加载bean的时候会使用哪个构造函数
 
 #### 二、redis相关

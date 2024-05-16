@@ -42,12 +42,26 @@ package record.leetcode.editor.cn;
 // Related Topics 递归 链表 数学
 // 👍 7944 👎 0
 
+import structure.link.LinkNodeManager;
 import structure.link.ListNode;
 
 public class AddTwoNumbers {
 	public static void main(String[] args) {
 		Solution solution = new AddTwoNumbers().new Solution();
 
+		ListNode list1 = LinkNodeManager.builder()
+			.addNextNode(2)
+			.addNextNode(4)
+			.addNextNode(3)
+			.build();
+
+		ListNode list2 = LinkNodeManager.builder()
+			.addNextNode(5)
+			.addNextNode(6)
+			.addNextNode(4)
+			.build();
+
+		solution.addTwoNumbers(list1,list2);
 	}
 
 //leetcode submit region begin(Prohibit modification and deletion)

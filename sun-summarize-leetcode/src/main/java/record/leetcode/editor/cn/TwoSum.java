@@ -60,6 +60,7 @@ public class TwoSum {
 
 			int[] result = {-1, -1};
 
+			// key为数组中的值，value该值对应的数据下标
 			HashMap<Integer, Integer> hashMap = new HashMap<>();
 
 			for (int i = 0; i < nums.length; i++) {

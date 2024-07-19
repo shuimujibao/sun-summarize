@@ -108,6 +108,65 @@ public class SubarraySumEqualsK {
 			}
 			return res;
 		}
+
+		/**
+		 * <p>
+		 * map逻辑:
+		 * 期望值:k
+		 * preSum[i] = x;
+		 * preSum[j] = y;
+		 * 此时遍历到j
+		 * <p>
+		 * 工式：y - k = x
+		 * 此时和为k的nums索引位置为 （i~j】左开右闭
+		 * ================================================================================
+		 * ========================== 示例！！！=============================================
+		 * ================================================================================
+		 * 期望值：k = 8
+		 * <p>
+		 * 索   引 = 0->1->2->3 -> 4
+		 * nums[] = 1->6->2->5 -> 1
+		 * preSum = 1->7->9->14->15
+		 * <p>
+		 * 此时遍历 preSum -> j =2
+		 * preSum[j] - k = 9-8 =1
+		 * 在 map中找 key =1 的值
+		 * preSum[i] = 1 此时 j = 0
+		 * <p>
+		 * sum中 i+1 ~ j 的数据和为 k
+		 *
+		 * @param nums 数组
+		 * @param k    期望值
+		 * @return int
+		 */
+		public int subarraySum3(int[] nums, int k) {
+			// 前缀和
+			int[] preSum = new int[nums.length];
+			preSum[0] = nums[0];
+			for (int i = 1; i < nums.length; i++) {
+				preSum[i] = nums[i] + preSum[i - 1];
+			}
+
+			// 子数组和为k的个数
+			int res = 0;
+
+			// 统计
+			HashMap<Integer, Integer> count = new HashMap<>();
+
+			// 遍历获取和为k的子数组
+			for (int i = 0; i < preSum.length; i++) {
+
+				int need = k - preSum[i];
+
+				if (count.containsKey(need)) {
+					res++;
+				} else {
+					count.put(preSum[i], count.get(preSum[i]) + 1);
+				}
+
+			}
+			return res;
+		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)
 

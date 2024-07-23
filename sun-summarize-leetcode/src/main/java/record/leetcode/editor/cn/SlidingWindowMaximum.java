@@ -42,6 +42,10 @@ package record.leetcode.editor.cn;
 // Related Topics 队列 数组 滑动窗口 单调队列 堆（优先队列）
 // 👍 2573 👎 0
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class SlidingWindowMaximum {
 	public static void main(String[] args) {
 		Solution solution = new SlidingWindowMaximum().new Solution();
@@ -51,8 +55,51 @@ public class SlidingWindowMaximum {
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int[] maxSlidingWindow(int[] nums, int k) {
+			MonotonicQueue window = new MonotonicQueue();
+			List<Integer> res = new ArrayList<>();
 
-			return new int[]{};
+			for (int i = 0; i < nums.length; i++) {
+				if (i < k - 1) {
+					// 先填满窗口的前 k - 1
+					window.push(nums[i]);
+				} else {
+					// 窗口向前滑动，加入新数字
+					window.push(nums[i]);
+					// 记录当前窗口的最大值
+					res.add(window.max());
+					// 移出旧数字
+					window.pop(nums[i - k + 1]);
+				}
+			}
+			// 需要转成 int[] 数组再返回
+			int[] arr = new int[res.size()];
+			for (int i = 0; i < res.size(); i++) {
+				arr[i] = res.get(i);
+			}
+			return arr;
+		}
+
+		// 单调队列的实现
+		class MonotonicQueue {
+			LinkedList<Integer> q = new LinkedList<>();
+			public void push(int n) {
+				// 将小于 n 的元素全部删除
+				while (!q.isEmpty() && q.getLast() < n) {
+					q.pollLast();
+				}
+				// 然后将 n 加入尾部
+				q.addLast(n);
+			}
+
+			public int max() {
+				return q.getFirst();
+			}
+
+			public void pop(int n) {
+				if (n == q.getFirst()) {
+					q.pollFirst();
+				}
+			}
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

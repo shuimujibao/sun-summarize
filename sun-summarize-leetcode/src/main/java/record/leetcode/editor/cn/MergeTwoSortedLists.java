@@ -85,26 +85,34 @@ public class MergeTwoSortedLists {
 	 */
 	class Solution {
 
-		public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-			// 记录头节点位置
-			ListNode dum = new ListNode(0);
-			// 当前节点
-			ListNode cur = dum;
-			// 双指针遍历
-			while (list1 != null && list2 != null) {
-				if (list1.val < list2.val) {
-					cur.next = list1;
-					list1 = list1.next;
+		public ListNode mergeTwoLists(ListNode p1, ListNode p2) {
+			// 虚拟头结点
+			ListNode dummy = new ListNode(-1);
+			ListNode p = dummy;
+
+			while (p1 != null && p2 != null) {
+				// 比较 p1 和 p2 两个指针
+				// 将值较小的的节点接到 p 指针
+				if (p1.val > p2.val) {
+					p.next = p2;
+					p2 = p2.next;
 				} else {
-					cur.next = list2;
-					list2 = list2.next;
+					p.next = p1;
+					p1 = p1.next;
 				}
-				cur = cur.next;
+				// p 指针不断前进
+				p = p.next;
 			}
-			// 剩下节点赋值
-			cur.next = list1 != null ? list1 : list2;
-			// 返回头节点
-			return dum.next;
+
+			if (p1 != null) {
+				p.next = p1;
+			}
+
+			if (p2 != null) {
+				p.next = p2;
+			}
+
+			return dummy.next;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

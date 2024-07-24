@@ -35,8 +35,6 @@ package record.leetcode.editor.cn;
 // Related Topics 数组 双指针
 // 👍 1854 👎 0
 
-import util.Swap;
-
 public class MoveZeroes{
     public static void main(String[] args) {
         Solution solution = new MoveZeroes().new Solution();
@@ -45,8 +43,30 @@ public class MoveZeroes{
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public void moveZeroes(int[] nums) {
-		int left = 0, right = 0;
+
+	/**
+	 * 普通遍历->俩俩交换
+	 * 第一轮：0,1,0,3,12
+	 * 第一轮：1,0,0,3,12
+	 * 第一轮：1,0,0,3,12
+	 * 第一轮：1,0,3,0,12
+	 * 第一轮：1,0,3,12,0
+	 * <p>
+	 * 第二轮：1,0,3,12,0
+	 * 第二轮：1,3,0,12,0
+	 * 第二轮：1,3,12,0,0
+	 * <p>
+	 * 双指针遍历->遇到0不动
+	 * 第一轮：0,1,0,3,12
+	 * 第一轮：1,0,0,3,12
+	 * 第一轮：1,3,0,0,12
+	 * 第一轮：1,3,12,0,0
+	 *
+	 * @param nums 数组
+	 */
+	public void moveZeroes(int[] nums) {
+		int left = 0;
+		int right = 0;
 
 		while (right < nums.length) {
 			if (nums[right] != 0) {
@@ -64,5 +84,4 @@ class Solution {
 	}
 }
 //leetcode submit region end(Prohibit modification and deletion)
-
 }

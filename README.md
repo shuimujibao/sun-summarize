@@ -15,3 +15,4 @@
 | sun-summarize-netty          | netty网络框架学习   | [文档](./sun-summarize-netty/README.md)        |
 | sun-summarize-spring-cloud   | springCloud框架 | [文档](./sun-summarize-spring-cloud/README.md) |
 | sun-summarize-sub-table      | 分库分表          | [文档](./sun-summarize-sub-table/README.md)    |
+| sun-summarize-rocketmq       | rocketmq      | [文档](./sun-summarize-rocketmq/README.md)    |

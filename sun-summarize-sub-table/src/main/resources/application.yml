@@ -1,0 +1,32 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: test0,test1                                        # 数据源，这里为了方便直接使用库名的名称
+      test0:
+        type: com.alibaba.druid.pool.DruidDataSource            # Druid连接池
+        url: jdbc:mysql://127.0.0.1:3306/test0                  # 连接test0的url
+        username: root
+        password: 123456
+      test1:
+        type: com.alibaba.druid.pool.DruidDataSource            # Druid连接池
+        url: jdbc:mysql://127.0.0.1:3306/test1                  # 连接test1的url
+        username: root
+        password: 123456
+    sharding:
+      default-database-strategy:                                # 默认分库策略
+        inline:
+          sharding-column: age                                  # 表示根据age列进行分库
+          algorithm-expression: test$->{age % 2}                # 根据age对2的模进行分库，模为0表示test0库，模为1表示test1库
+      tables:
+        user:
+          actual-data-nodes: test$->{0..1}.user$->{0..2}        # 表的名字，test$->{0..1}可以表示test0、test1两个库
+          # user$->{0..2}表示user0、user1、user2三个库
+          table-strategy:                                       # 分表策略
+            inline:
+              sharding-column: id                               # 根据哪一列进行分表，id表示根据列名为"id"的列分表
+              algorithm-expression: user$->{id%3}               # 分表规则为id对3取模，id%3为0表示分到user0表
+              # id%3为1表示分到user1表，id%3为2表示分到user2表
+    props:
+      sql:
+        show:
+          true                                                  # 打印sql

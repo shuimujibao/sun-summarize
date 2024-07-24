@@ -32,6 +32,9 @@ package record.leetcode.editor.cn;
 // Related Topics 哈希表 双指针 字符串 滑动窗口
 // 👍 671 👎 0
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PermutationInString{
     public static void main(String[] args) {
         Solution solution = new PermutationInString().new Solution();
@@ -41,53 +44,41 @@ public class PermutationInString{
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Solution {
 
-	public boolean checkInclusion(String s1, String s2) {
-		char[] pattern = s1.toCharArray();
-		char[] text = s2.toCharArray();
-
-		int pLen = s1.length();
-		int tLen = s2.length();
-
-		int[] pFreq = new int[26];
-		int[] winFreq = new int[26];
-
-		for (int i = 0; i < pLen; i++) {
-			pFreq[pattern[i] - 'a']++;
+	public boolean checkInclusion(String t, String s) {
+		Map<Character, Integer> need = new HashMap<>();
+		Map<Character, Integer> window = new HashMap<>();
+		for (char c : t.toCharArray()) {
+			need.put(c, need.getOrDefault(c, 0) + 1);
 		}
 
-		int pCount = 0;
-		for (int i = 0; i < 26; i++) {
-			if (pFreq[i] > 0){
-				pCount++;
-			}
-		}
-
-		int left = 0;
-		int right = 0;
-		// 当滑动窗口中的某个字符个数与 s1 中对应相等的时候才计数
-		int winCount = 0;
-		while (right < tLen){
-			if (pFreq[text[right] - 'a'] > 0 ) {
-				winFreq[text[right] - 'a']++;
-				if (winFreq[text[right] - 'a'] == pFreq[text[right] - 'a']){
-					winCount++;
-				}
-			}
+		int left = 0, right = 0;
+		int valid = 0;
+		while (right < s.length()) {
+			char c = s.charAt(right);
 			right++;
+			// 进行窗口内数据的一系列更新
+			if (need.containsKey(c)) {
+				window.put(c, window.getOrDefault(c, 0) + 1);
+				if (window.get(c).equals(need.get(c)))
+					valid++;
+			}
 
-			while (pCount == winCount){
-				if (right - left == pLen){
+			// 判断左侧窗口是否要收缩
+			while (right - left >= t.length()) {
+				// 在这里判断是否找到了合法的子串
+				if (valid == need.size())
 					return true;
-				}
-				if (pFreq[text[left] - 'a'] > 0 ) {
-					winFreq[text[left] - 'a']--;
-					if (winFreq[text[left] - 'a'] < pFreq[text[left] - 'a']){
-						winCount--;
-					}
-				}
+				char d = s.charAt(left);
 				left++;
+				// 进行窗口内数据的一系列更新
+				if (need.containsKey(d)) {
+					if (window.get(d).equals(need.get(d)))
+						valid--;
+					window.put(d, window.get(d) - 1);
+				}
 			}
 		}
+		// 未找到符合条件的子串
 		return false;
 	}
 }

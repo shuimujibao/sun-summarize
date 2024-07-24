@@ -1,4 +1,7 @@
-package record.leetcode.editor.cn;
+package record;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 //给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 //
@@ -44,39 +47,25 @@ package record.leetcode.editor.cn;
 // 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
 // Related Topics 数组 哈希表
 // 👍 14201 👎 0
-
-import java.util.HashMap;
-import java.util.Objects;
-
 public class TwoSum {
-	public static void main(String[] args) {
-		Solution solution = new TwoSum().new Solution();
 
-	}
+	public int[] search(int[] nums, int target) {
 
-	//leetcode submit region begin(Prohibit modification and deletion)
-	class Solution {
-		public int[] twoSum(int[] nums, int target) {
+		int[] result = {-1, -1};
 
-			int[] result = {-1, -1};
+		HashMap<Integer, Integer> hashMap = new HashMap<>();
 
-			// key为数组中的值，value该值对应的数据下标
-			HashMap<Integer, Integer> hashMap = new HashMap<>();
+		for (int i = 0; i < nums.length; i++) {
 
-			for (int i = 0; i < nums.length; i++) {
+			Integer index = hashMap.get(target - nums[i]);
 
-				Integer index = hashMap.get(target - nums[i]);
-
-				if (Objects.nonNull(index)) {
-					return new int[]{i, index};
-				}
-
-				hashMap.put(nums[i], i);
+			if (Objects.nonNull(index)) {
+				return new int[]{i, index};
 			}
-
-			return result;
+			
+			hashMap.put(nums[i], i);
 		}
-	}
-//leetcode submit region end(Prohibit modification and deletion)
 
+		return result;
+	}
 }

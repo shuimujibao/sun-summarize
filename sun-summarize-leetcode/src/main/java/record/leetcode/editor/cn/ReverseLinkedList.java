@@ -61,7 +61,7 @@ public class ReverseLinkedList {
 			.addNextNode(5)
 			.build();
 
-		ListNode reverseListResult = solution.reverseList2(head);
+		ListNode reverseListResult = solution.reverseList(head);
 
 		System.out.println("======反转后结果======");
 		LinkNodePrint.printlnListNode(reverseListResult);
@@ -97,13 +97,13 @@ public class ReverseLinkedList {
 		public ListNode reverseList(ListNode head) {
 
 			// 递归中止条件
-			if (Objects.isNull(head.next)) {
+			if (Objects.isNull(head)) {
 				return head;
 			}
 
 			// 当前节点的下一个节点
 			ListNode lastNode = reverseList(head.next);
-			System.out.println(lastNode);
+			LinkNodePrint.printlnListNode("后序：",head);
 //			head.next.next = head;
 //			head.next = null;
 			return lastNode;

@@ -12,8 +12,8 @@ zk集群选举时集群是否可用，当前节点数为偶数时，是否可以
     - Zookeeper集群中的任何一台机器都可以响应客户端的读操作，且全量数据都存在于内存中，因此Zookeeper更适合以读操作为主的应用场景。
     >注意，当不是leader的服务器收到客户端事务操作，他会将其转发到Leader，让Leader进行处理。
     - ZooKeeper集群的所有机器通过一个Leader选举过程来选定一台被称为『Leader』的机器，Leader服务器为客户端提供读和写服务。
-    - Follower和Observer都能提供读服务，不能提供写服务。  
-    
+    - Follower和Observer都能提供读服务，不能提供写服务。
+
  两者唯一的区别在于，Observer机器不参与Leader选举过程，也不参与写操作的『过半写成功』策略，因此Observer可以在不影响写性能的情况下提升集群的读性能。
 
 如何认定zk集群彻底挂掉
@@ -36,7 +36,6 @@ dubble与feign对比
 
 spring的bean初始化过程
 -----
-
 
 bean的循环依赖如何解决
 ----

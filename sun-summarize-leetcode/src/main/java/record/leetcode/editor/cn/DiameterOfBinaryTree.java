@@ -1,35 +1,52 @@
 package record.leetcode.editor.cn;
-
-//给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
+//给你一棵二叉树的根节点，返回该树的 直径 。
+//
+// 二叉树的 直径 是指树中任意两个节点之间最长路径的 长度 。这条路径可能经过也可能不经过根节点 root 。
+//
+// 两节点之间路径的 长度 由它们之间边数表示。
 //
 //
 //
-// 示例 :
-//给定二叉树
-//
-//           1
-//         / \
-//        2   3
-//       / \
-//      4   5
+// 示例 1：
 //
 //
-// 返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
+//输入：root = [1,2,3,4,5]
+//输出：3
+//解释：3 ，取路径 [4,2,1,3] 或 [5,2,1,3] 的长度。
+//
+//
+// 示例 2：
+//
+//
+//输入：root = [1,2]
+//输出：1
 //
 //
 //
-// 注意：两结点之间的路径长度是以它们之间边的数目表示。
-// Related Topics 树 深度优先搜索 二叉树
-// 👍 1060 👎 0
+//
+// 提示：
+//
+//
+// 树中节点数目在范围 [1, 10⁴] 内
+// -100 <= Node.val <= 100
+//
+//
+// Related Topics树 | 深度优先搜索 | 二叉树
+//
+// 👍 1570, 👎 0bug 反馈 | 使用指南 | 更多配套插件
+//
+//
+//
+//
 
 import structure.tree.TreeNode;
+
+import java.util.Objects;
 
 public class DiameterOfBinaryTree {
 	public static void main(String[] args) {
 		Solution solution = new DiameterOfBinaryTree().new Solution();
-
 	}
-
 //leetcode submit region begin(Prohibit modification and deletion)
 
 	/**
@@ -49,23 +66,32 @@ public class DiameterOfBinaryTree {
 	 */
 	class Solution {
 
-		private int ans = 0;
+		// 记录最大直径的长度
+		int maxDiameter = 0;
 
 		public int diameterOfBinaryTree(TreeNode root) {
-			ans = 1;
-			depth(root);
-			return ans - 1;
+
+			if (Objects.isNull(root)) {
+				return 0;
+			}
+
+			traverse(root);
+
+			return maxDiameter;
 		}
 
-
-		private int depth(TreeNode node) {
-			if (node == null) {
-				return 0; // 访问到空节点了，返回0
+		// 遍历二叉树
+		private int traverse(TreeNode root) {
+			if (Objects.isNull(root)) {
+				return 0;
 			}
-			int L = depth(node.left); // 左儿子为根的子树的深度
-			int R = depth(node.right); // 右儿子为根的子树的深度
-			ans = Math.max(ans, L+R+1); // 计算d_node即L+R+1 并更新ans
-			return Math.max(L, R) + 1; // 返回该节点为根的子树的深度
+
+			int leftDepth = traverse(root.left);
+			int rightDepth = traverse(root.right);
+
+			maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
+
+			return Math.max(leftDepth, rightDepth) + 1;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

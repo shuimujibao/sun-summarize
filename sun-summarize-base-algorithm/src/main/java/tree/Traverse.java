@@ -3,7 +3,7 @@ package tree;
 import structure.tree.TreeNode;
 import structure.tree.TreeNodeManager;
 import structure.tree.TreeNodePrint;
-import tree.breadth.BreadthTraversal;
+import tree.learn.Learn;
 
 /**
  * 二叉树遍历
@@ -24,14 +24,27 @@ public class Traverse {
 
 
 		TreeNodePrint.levelTraverse(root);
-//		System.out.println("");
-//		System.out.println("=====");
-//		DeepTraversal.deepTraversal(DeepTraversal.PRE_ORDER_TRAVERSAL,root);
+		System.out.println();
+
+
+		// ===============================深度优先遍历=================================================================
+//		DeepTraversal.deepTraversal(DeepTraversal.IN_ORDER_TRAVERSAL,root);
 //		System.out.println("=====");
 //		DeepTraversal.deepTraversal(DeepTraversal.POST_ORDER_TRAVERSAL,root);
 //		System.out.println("=====");
 //		DeepTraversal.deepTraversal(DeepTraversal.IN_ORDER_TRAVERSAL,root);
 
-		BreadthTraversal.levelTraversal(root);
+		// ===============================如果把根节点看做第 1 层，如何打印出每一个节点所在的层数===============================
+
+		System.out.println("==========如果把根节点看做第 1 层，如何打印出每一个节点所在的层数============");
+		Learn.traverse(root,1);
+
+		System.out.println("======================");
+		System.out.println("=========输入一棵二叉树，返回这棵二叉树的节点总数=============");
+		// ===============================输入一棵二叉树，返回这棵二叉树的节点总数===============================
+
+		Learn.count(root);
 	}
+
+
 }

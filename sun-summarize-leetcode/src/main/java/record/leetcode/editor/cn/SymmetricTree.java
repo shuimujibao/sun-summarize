@@ -60,17 +60,19 @@ public class SymmetricTree {
 	 */
 	class Solution {
 		public boolean isSymmetric(TreeNode root) {
-			return check(root, root);
+			return check(root.left, root.right);
 		}
 
-		public boolean check(TreeNode p, TreeNode q) {
-			if (p == null && q == null) {
-				return true;
+		public boolean check(TreeNode left, TreeNode right) {
+			if (left == null || right == null) {
+				return left == right;
 			}
-			if (p == null || q == null) {
-				return false;
-			}
-			return p.val == q.val && check(p.left, q.right) && check(p.right, q.left);
+			// 两个根节点需要相同
+			if (left.val != right.val) return false;
+
+			// 左右子树也需要镜像对称
+			return check(left.right, right.left) && check(left.left, right.right);
+
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

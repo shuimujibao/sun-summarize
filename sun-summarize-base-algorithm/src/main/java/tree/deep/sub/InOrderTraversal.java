@@ -21,10 +21,8 @@ public class InOrderTraversal {
 		if (root == null) {
 			return;
 		}
-		System.out.println("=======先序：" + root.val);
 		recursion(root.left);
-//		System.out.println("===中序：" + root.val);
+		System.out.println("===中序：" + root.val);
 		recursion(root.right);
-		System.out.println("=后序：" + root.val);
 	}
 }

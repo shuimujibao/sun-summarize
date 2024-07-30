@@ -3,7 +3,6 @@ package tree;
 import structure.tree.TreeNode;
 import structure.tree.TreeNodeManager;
 import structure.tree.TreeNodePrint;
-import tree.learn.Learn;
 
 /**
  * 二叉树遍历
@@ -36,14 +35,44 @@ public class Traverse {
 
 		// ===============================如果把根节点看做第 1 层，如何打印出每一个节点所在的层数===============================
 
-		System.out.println("==========如果把根节点看做第 1 层，如何打印出每一个节点所在的层数============");
-		Learn.traverse(root,1);
+//		System.out.println("==========如果把根节点看做第 1 层，如何打印出每一个节点所在的层数============");
+//		Learn.traverse(root,1);
+//
+//		System.out.println("======================");
+//		System.out.println("=========输入一棵二叉树，返回这棵二叉树的节点总数=============");
+//		// ===============================输入一棵二叉树，返回这棵二叉树的节点总数===============================
+//		Learn.count(root);
 
-		System.out.println("======================");
-		System.out.println("=========输入一棵二叉树，返回这棵二叉树的节点总数=============");
-		// ===============================输入一棵二叉树，返回这棵二叉树的节点总数===============================
+//		System.out.println("======================");
+//		System.out.println("=========打印出遍历这棵二叉树的过程=============");
+//		// =============================== 打印出遍历这棵二叉树的过程===============================
+//		Learn.traverse(root);
 
-		Learn.count(root);
+		Traverse.sumPath(root);
+
+		System.out.println(sum);
+	}
+
+	/**
+	 * 路径和
+	 *
+	 * @param root 根节点
+	 * @return 节点总数
+	 */
+	private static int sum = 0;
+
+	public static void sumPath(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		sum = sum + root.val;
+
+		if (root.left == null && root.right == null) {
+			System.out.println("路径和："+sum);
+		}
+		sumPath(root.left);
+		sumPath(root.right);
+		sum = sum - root.val;
 	}
 
 

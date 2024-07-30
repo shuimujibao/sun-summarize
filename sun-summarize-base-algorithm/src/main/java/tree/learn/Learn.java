@@ -2,6 +2,8 @@ package tree.learn;
 
 import structure.tree.TreeNode;
 
+import java.util.Objects;
+
 /**
  * @description: 学习树
  * @author: xy.sun06
@@ -45,5 +47,32 @@ public class Learn {
 		System.out.println();
 
 		return leftCount + rightCount + 1;
+	}
+
+	/**
+	 * 打印出遍历这棵二叉树的过程
+	 *
+	 * @param root 根节点
+	 */
+	public static void traverse(TreeNode root) {
+		if (root == null) return;
+
+		//=========================
+		System.out.printf("前序=======从节点 %s 进入节点 %s", root.val, Objects.isNull(root.left) ? "NULL" : root.left.val);
+		System.out.println();
+
+		traverse(root.left);
+
+		System.out.printf("中序====从节点 %s 回到节点 %s", Objects.isNull(root.left) ? "NULL" : root.left.val, root.val);
+		System.out.println();
+
+		//=========================
+		System.out.printf("中序====从节点 %s 进入节点 %s", root.val, Objects.isNull(root.right) ? "NULL" : root.right.val);
+		System.out.println();
+
+		traverse(root.right);
+
+		System.out.printf("后序=从节点 %s 回到节点 %s", Objects.isNull(root.right) ? "NULL" : root.right.val, root.val);
+		System.out.println();
 	}
 }

@@ -44,13 +44,23 @@ import java.util.LinkedList;
 public class MergeIntervals {
 	public static void main(String[] args) {
 		Solution solution = new MergeIntervals().new Solution();
+
+		int[][] intervals = {{1, 2},{4,5}};
+
+		solution.merge(intervals);
+
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public int[][] merge(int[][] intervals) {
+
+			int length = intervals.length;
+
 			// 按区间的 start 升序排列
 			Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+			Arrays.sort(intervals, (o1, o2) -> o1[0] - o2[0]);
 
 			// 合并后区间
 			LinkedList<int[]> res = new LinkedList<>();

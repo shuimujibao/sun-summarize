@@ -3,6 +3,7 @@ package tree;
 import structure.tree.TreeNode;
 import structure.tree.TreeNodeManager;
 import structure.tree.TreeNodePrint;
+import tree.learn.Learn;
 
 /**
  * 二叉树遍历
@@ -46,11 +47,11 @@ public class Traverse {
 //		System.out.println("======================");
 //		System.out.println("=========打印出遍历这棵二叉树的过程=============");
 		// =============================== 打印出遍历这棵二叉树的过程===============================
-//		Learn.traverse(root);
+		Learn.traverse(root);
 
-		Traverse.sumPath(root);
-
-		System.out.println(sum);
+//		Traverse.sumPath(root);
+//
+//		System.out.println(sum);
 	}
 
 	/**

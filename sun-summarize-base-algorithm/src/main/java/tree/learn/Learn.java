@@ -58,7 +58,7 @@ public class Learn {
 		if (root == null) return;
 
 		//=========================
-		System.out.printf("前序=======从节点 %s 进入节点 %s", root.val, Objects.isNull(root.left) ? "NULL" : root.left.val);
+//		System.out.printf("前序=======从节点 %s 进入节点 %s", root.val, Objects.isNull(root.left) ? "NULL" : root.left.val);
 		System.out.println();
 
 		traverse(root.left);

@@ -19,7 +19,22 @@ public class WriteExam {
 	 * @param root 树
 	 * @return TreeNode
 	 */
-	public TreeNode revert(TreeNode root) {
+
+	int k;
+
+	public TreeNode revert(TreeNode root, int k) {
+		this.k = k;
+		traverse(root.left, root.right);
 		return root;
+	}
+
+	void traverse(TreeNode node1, TreeNode node2) {
+
+		if (node1 == null || node2 == null) {
+			return;
+		}
+
+		traverse(node1.left, node1.right);
+		traverse(node2.left, node2.right);
 	}
 }

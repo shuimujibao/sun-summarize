@@ -68,7 +68,7 @@ public class PathSumIii {
 	 */
 	class Solution {
 		// 路径和
-		private int pathSum = 0;
+		private long pathSum = 0;
 		// 路径和结果集
 		private int result = 0;
 		// 目标值

@@ -11,8 +11,9 @@
 
 其他项目中使用发送短信功能的话，我们只需要在配置文件(application.ym）中配置SmsProperties 的属性信息就可以了
 
-一条update语句的实现流程
+一条update语句的实现流程 [解读]( https://cloud.tencent.com/developer/article/2298165)
 -----
+![update](update.png "update")
 
 HashSet的实现逻辑
 -------

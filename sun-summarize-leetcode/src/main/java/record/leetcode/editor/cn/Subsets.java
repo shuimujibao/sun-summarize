@@ -47,7 +47,6 @@ public class Subsets {
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
-
 		/**
 		 * 结果集
 		 */
@@ -56,21 +55,14 @@ public class Subsets {
 		/**
 		 * 单个结果
 		 */
-		Deque<Integer> path = new ArrayDeque<>();
+		LinkedList<Integer> path = new LinkedList<>();
 
 		public List<List<Integer>> subsets(int[] nums) {
-
 			backTrack(0, nums);
 
 			return result;
 		}
 
-		/**
-		 * 回溯
-		 *
-		 * @param startIndex 取值数量
-		 * @param nums       数据源
-		 */
 		public void backTrack(int startIndex, int[] nums) {
 			// 中止条件
 			result.add(new LinkedList<>(path));
@@ -79,7 +71,7 @@ public class Subsets {
 			for (int i = startIndex; i < nums.length; i++) {
 				path.add(nums[i]);
 				backTrack(i + 1, nums);
-				path.pop();
+				path.removeLast();
 			}
 		}
 	}

@@ -111,7 +111,10 @@ TCC特点如下：
  volatile关键词的实现原理
 -------------
 * 实现原理
-* 用在哪里，为什么这么用
+    * volatile关键字主要保证可见性、有序性和禁止编译器优化。
+    * volatile的底层原理是依赖内存屏障和缓存一致性协议实现的。
+    * volatile不能保证原子性,要配合synchronized或Atomic类解决。
+    * volatile的实现依赖JMM中的主内存、工作内存和内存屏障等概念。
 
 redis大key问题处理
 -----------
@@ -137,8 +140,26 @@ redis大key问题处理
 如何给线程重命名
 -------
 
+* 构造器命名
+* setName()方法
+
 rocketMq的broker分片过程
 --------
+* topicA ----对应---> Consumer Group
+    * topicA_1(broker1)
+        * queue1 =====> consumer1
+        * queue2 =====> consumer1
+        * queue3 =====> consumer2
+        * queue4 =====> consumer2
+    * topicA_2(broker1)
+        * queue1 =====> consumer3
+        * queue2 =====> consumer3
+        * queue3 =====> consumer4
+        * queue4 =====> consumer4
+    * topicA_3(broker1)
+        * queue1
+
+> 一个Queue最多只能分配给一个Consumer，一个Cosumer可以分配得到多个Queue。这样的分配规则，每个Queue只有一个消费者，可以避免消费过程中的多线程处理和资源锁定，有效提高各Consumer消费的并行度和处理效率。
 
 你项目中分布式的实现原理，redLock的实现原理
 ----------

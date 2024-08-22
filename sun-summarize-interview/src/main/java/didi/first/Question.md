@@ -60,7 +60,7 @@
 独享锁与共享锁也是通过AQS来实现的，通过实现不同的方法，来实现独享或者共享。
 
 > 独享锁也叫排他锁，是指该锁一次只能被一个线程所持有。如果线程T对数据A加上排它锁后，则其他线程不能再对A加任何类型的锁。获得排它锁的线程即能读数据又能修改数据。JDK中的synchronized和JUC中Lock的实现类就是互斥锁。
-共享锁是指该锁可被多个线程所持有。如果线程T对数据A加上共享锁后，则其他线程只能对A再加共享锁，不能加排它锁。获得共享锁的线程只能读数据，不能修改数据。
+> 共享锁是指该锁可被多个线程所持有。如果线程T对数据A加上共享锁后，则其他线程只能对A再加共享锁，不能加排它锁。获得共享锁的线程只能读数据，不能修改数据。
 
 在独享锁中这个值通常是0或者1（如果是重入锁的话state值就是重入的次数），在共享锁中state就是持有锁的数量。但是在ReentrantReadWriteLock中有读、写两把锁，所以需要在一个整型变量state上分别描述读锁和写锁的数量（或者也可以叫状态）。
 于是将state变量“按位切割”切分成了两个部分，高16位表示读锁状态（读锁个数），低16位表示写锁状态（写锁个数）。如下图所示：
@@ -93,8 +93,8 @@
 4.Eureka挂掉一个服务如何保证安全，如何摘掉挂掉的服务
 ------
 > Eureka Server中有一个EvictionTask，用于检查服务是否失效。Eviction（失效服务剔除）用来定期（默认为每60秒）在Eureka Server检测失效的服务，
-检测标准就是超过一定时间没有Renew的服务。默认失效时间为90秒，也就是如果有服务超过90秒没有向Eureka Server发起Renew请求的话，就会被当做失效服务剔除掉。
-失效时间可以通过eureka.instance.leaseExpirationDurationInSeconds进行配置，定期扫描时间可以通过eureka.server.evictionIntervalTimerInMs进行配置。
+> 检测标准就是超过一定时间没有Renew的服务。默认失效时间为90秒，也就是如果有服务超过90秒没有向Eureka Server发起Renew请求的话，就会被当做失效服务剔除掉。
+> 失效时间可以通过eureka.instance.leaseExpirationDurationInSeconds进行配置，定期扫描时间可以通过eureka.server.evictionIntervalTimerInMs进行配置。
 
 服务剔除#evict方法中有很多限制，都是为了保证Eureka Server的可用性：
 比如自我保护时期不能进行服务剔除操作、过期操作是分批进行、服务剔除是随机逐个剔除，剔除均匀分布在所有应用中，
@@ -130,8 +130,10 @@
 7.在a ,b,c组合索引ab的查询过程和ac的查询过程最佳做前缀原则
 ------
 联合索引的使用原则
-从左到右依次匹配索引的列。
-在这种情况下，索引A,B,C可以用于查询体条件中的列A，因为它是索引的最左边的列。然而，由于查询条件涉及的列 C 不是索引的下一个列，所以索引无法直接用于列 C 的查找。
+
+* 从左到右依次匹配索引的列。
+* 在这种情况下，索引A,B,C可以用于查询体条件中的列A，因为它是索引的最左边的列。
+* 然而，由于查询条件涉及的列 C 不是索引的下一个列，所以索引无法直接用于列 C 的查找。
 
 8.Spring什么时候事物会失效，一个service里A方法调用B方法如何失效
 ------
@@ -166,6 +168,26 @@ Spring事务失效的原因可能有多种，以下是一些常见的原因以�
 
 10.如何通过反射拿到类中的私有属性
 ------
+检查访问权限‌：使用Field对象的setAccessible(true)方法来确保可以访问私有属性。这一步是必要的，因为默认情况下，反射API不能访问私有成员。
+
+    MyClass instance = new MyClass();
+    // 获取私有字段的Field对象
+    Field privateField = MyClass.class.getDeclaredField("privateField");
+    // 设置字段可访问
+    privateField.setAccessible(true);
+    // 获取私有字段的值
+    Object privateFieldValue = privateField.get(instance);
+    System.out.println("Private Field Value: " + privateFieldValue);
 
 11.如何判断是同一个对象，同一个实例
 ------
+比较内容 重写equals方法
+
+instanceof 比较是否是同一个实例
+
+    Animal myAnimal = new Dog();
+    if (myAnimal instanceof Dog) {
+        System.out.println("myAnimal 是 Dog 类的实例");
+    } else {
+        System.out.println("myAnimal 不是 Dog 类的实例");
+    }

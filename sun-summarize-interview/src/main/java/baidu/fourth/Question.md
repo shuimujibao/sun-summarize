@@ -108,19 +108,34 @@ dubble基于什么（传输层）协议实现的
 spring的bean初始化过程
 -----
 
-bean的循环依赖如何解决
+[bean的循环依赖如何解决]()
 ----
+[见滴滴第一轮面试标题一](/didi/first/Question.md#1bean的三级缓存)
 
 何时Spring的事物会失效，如何处理
 -------
+[见滴滴第一轮面试标题八](/didi/first/Question.md#8spring什么时候事物会失效一个service里a方法调用b方法如何失效)
 
 spring获取一个类的代理类有几种方式
 -----
+在Spring框架中，你可以通过多种方式获取类的代理类。以下是一些常见的方法：
+* 使用ApplicationContext获取：
+  - `MyClass myClass = applicationContext.getBean(MyClass.class);`
+  - 如果你的类已经被Spring容器管理，你可以通过ApplicationContext获取到它的代理类。
+* 使用@Autowired或@Resource注解：
+  * 你可以在需要的地方使用@Autowired或@Resource注解，让Spring自动注入该类的代理对象。
+* 使用AopContext获取：
+  * 如果你的类是一个被AOP（面向切面编程）增强的bean，你可以使用AopContext.currentProxy()方法获取当前代理对象。但是要注意，这需要设置expose-proxy="true"。
+  * `MyClass myClass = (MyClass) AopContext.currentProxy();`
 
 jdk动态代理与cglib动态代理的区别,jdk动态代理为什么效率高
 ----
+- JDK动态代理‌
+  - JDK动态代理是基于Java的反射机制实现的，它只能为接口创建代理实例。这种代理方式是通过实现InvocationHandler接口来定义横切逻辑，并通过反射机制调用目标类的代码，将横切逻辑和业务逻辑结合在一起。JDK动态代理是面向接口的代理模式，如果被代理目标没有接口，那么Spring也无法通过反射机制生产被代理接口的新的匿名实现类，重写其中的增强方法。
+- CGLIB动态代理‌
+  - CGLIB是一个高性能的Code生成类库，它采用底层的字节码技术（全称是Code Generation Library），可以为一个类创建一个子类。在子类中采用方法拦截的技术拦截所有父类方法的调用并顺势织入横切逻辑。CGLIB动态代理利用ASM框架对代理对象类生成的class文件加载进来，通过修改其字节码生成子类来进行代理。
 
-
+> JDK动态代理的效率较高，主要是因为它的实现基于接口，避免了直接操作字节码的复杂性。而CGLIB虽然功能强大，但因为它需要生成子类并修改字节码，所以在某些情况下可能会比JDK动态代理慢。此外，JDK动态代理不需要任何外部依赖，这也是它在效率上占优势的一个原因。
 
 
 

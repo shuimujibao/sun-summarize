@@ -10,39 +10,36 @@ import java.util.PriorityQueue;
  * @since: 2023年10月25日 16:24:00
  */
 public class GetMidNums {
-	/**
-	 * 小顶堆，存储右半边元素，并且右半边元素都大于左半边
-	 */
-	private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+	private final PriorityQueue<Integer> large;
+	private final PriorityQueue<Integer> small;
 
-	/**
-	 * 大顶堆，存储左半边元素
-	 */
-	private PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);
-
-	/**
-	 * 当前数据流读入的元素个数
-	 */
-	private int count = 0;
-
-	public void Insert(Integer num) {
-		// 位运算判断偶数
-		if ((count & 1) == 0) {
-			maxHeap.add(num);
-			minHeap.add(maxHeap.poll());
-		} else {
-			minHeap.add(num);
-			maxHeap.add(minHeap.poll());
-		}
-		count++;
+	public GetMidNums() {
+		// 小顶堆
+		large = new PriorityQueue<>();
+		// 大顶堆
+		small = new PriorityQueue<>((a, b) -> b - a);
 	}
 
-	public Double GetMedian() {
-		// 位运算判断奇数
-		if ((count & 1) != 0) {
-			return (double) minHeap.peek();
+	public double findMedian() {
+
+		// 如果元素不一样多，多的那个堆的堆顶元素就是中位数
+		if (large.size() < small.size()) {
+			return small.peek();
+		} else if (large.size() > small.size()) {
+			return large.peek();
+		}
+		// 如果元素一样多，两个堆堆顶元素的平均数是中位数
+		return (large.peek() + small.peek()) / 2.0;
+
+	}
+
+	public void addNum(int num) {
+		if (small.size() >= large.size()) {
+			small.offer(num);
+			large.offer(small.poll());
 		} else {
-			return (minHeap.peek() + maxHeap.peek()) / 2.0;
+			large.offer(num);
+			small.offer(large.poll());
 		}
 	}
 }

@@ -44,7 +44,8 @@ public class WriteExam {
 			String digitChinese = digits[(int) digit];
 			String unitChinese = units[unit];
 
-			// 当前位等于0，每四位处理一次； part=0是四位数的最后一位，part=3是四位数的第一位；前缀0保留一个，尾缀0删除
+			// 当前位等于0，每四位处理一次；
+			// part=0是四位数的最后一位，part=3是四位数的第一位；前缀0保留一个，尾缀0删除
 			int part = unitIndex % 4;
 
 			if (unitChinese.equals(units[4])

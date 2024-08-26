@@ -23,13 +23,13 @@ public class WriteExam {
 		StringBuilder result = new StringBuilder();
 
 		// 单位
-		String[] units = {"", "十", "百", "千", "万", "十", "百", "千", "亿"};
+		String[] units = {"", "十", "百", "千", "万", "十", "百", "千", "亿", "十"};
 
 		// 数字
 		String[] digits = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
 
 		// 进制基准
-		int unitPoint = 10;
+		long unitPoint = 10;
 		int unitIndex = 0;
 
 		// 0出现标志
@@ -37,11 +37,11 @@ public class WriteExam {
 
 		while (n > 0) {
 			// 计算每位的数字和其对应的单位
-			int digit = (n % unitPoint) / (unitPoint / 10);
+			long digit = (n % unitPoint) / (unitPoint / 10);
 			int unit = unitIndex;
 
 			// 获取当前位的数字和单位对应的汉字
-			String digitChinese = digits[digit];
+			String digitChinese = digits[(int) digit];
 			String unitChinese = units[unit];
 
 			// 当前位等于0，每四位处理一次； part=0是四位数的最后一位，part=3是四位数的第一位；前缀0保留一个，尾缀0删除
@@ -67,7 +67,7 @@ public class WriteExam {
 			}
 
 			// 减去已经处理的位对应的值
-			n = n - digit * unitPoint / 10;
+			n = (int) (n - digit * unitPoint / 10);
 
 			// 获取下一位基准
 			unitIndex++;
@@ -78,7 +78,7 @@ public class WriteExam {
 	}
 
 	public static void main(String[] args) {
-		int maxValue = 100002060;
+		int maxValue = 2107808060;
 		System.out.println(maxValue);
 		System.out.println(WriteExam.numberToChineseWithFourBit(maxValue));
 	}

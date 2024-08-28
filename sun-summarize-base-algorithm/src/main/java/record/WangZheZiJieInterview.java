@@ -3,7 +3,7 @@ package record;
 import java.util.LinkedList;
 
 /**
- * @description:
+ * @description: 数据流中，0，1相同数量的子数组
  * @author: xy.sun06
  * @create: 2024-08-27 07:36
  * @Copyright (c) 2024, © 神州租车（北京）科技有限公司

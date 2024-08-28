@@ -50,6 +50,8 @@ import java.util.List;
 public class NQueens {
 	public static void main(String[] args) {
 		Solution solution = new NQueens().new Solution();
+
+		solution.solveNQueens(4);
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)

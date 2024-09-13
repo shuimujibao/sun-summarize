@@ -1,6 +1,7 @@
 package didi.forth.one.products;
 
-import didi.ProductBridge;
+
+import didi.forth.one.ProductBridge;
 
 /**
  * @description: 可乐

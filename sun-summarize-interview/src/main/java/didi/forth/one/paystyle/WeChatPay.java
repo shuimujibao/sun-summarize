@@ -1,6 +1,7 @@
 package didi.forth.one.paystyle;
 
-import didi.PayStyleInterface;
+
+import didi.forth.one.PayStyleInterface;
 
 /**
  * @description: 微信支付

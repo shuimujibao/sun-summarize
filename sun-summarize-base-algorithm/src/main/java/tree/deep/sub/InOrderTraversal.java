@@ -22,7 +22,7 @@ public class InOrderTraversal {
 			return;
 		}
 		recursion(root.left);
-		System.out.println(root.val);
+		System.out.println("===中序：" + root.val);
 		recursion(root.right);
 	}
 }

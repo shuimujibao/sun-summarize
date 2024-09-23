@@ -49,29 +49,83 @@ package record.leetcode.editor.cn;
 // Related Topics 记忆化搜索 数学 动态规划
 // 👍 526 👎 0
 
+import java.time.Duration;
+import java.util.Date;
+
 public class FeiBoNaQiShuLieLcof {
 	public static void main(String[] args) {
 		Solution solution = new FeiBoNaQiShuLieLcof().new Solution();
 
-		System.out.println(solution.fib(3));
+		Date start = new Date();
+		System.out.println(solution.fib(40));
+		Date end = new Date();
 
+		long diffInMillies = Duration.between(start.toInstant(), end.toInstant()).toMillis();
+
+		System.out.println("耗时：" + diffInMillies);
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 
 	class Solution {
+		/**
+		 * 递归获取
+		 */
 		public int fib(int n) {
-			final int MOD = 1000000007;
-			if (n < 2) {
+			if (n == 0) {
+				return 0;
+			}
+
+			if (n == 1) {
+				return 1;
+			}
+
+			return fib(n - 1) + fib(n - 2);
+		}
+
+		/**
+		 * 自顶向下，使用备忘录获取
+		 */
+		int fib2(int N) {
+			// 备忘录全初始化为 0
+			int[] memo = new int[N + 1];
+			// 进行带备忘录的递归
+			return dp(memo, N);
+		}
+
+		// 带着备忘录进行递归
+		int dp(int[] memo, int n) {
+			// base case
+			if (n == 0 || n == 1) {
 				return n;
 			}
-			int p = 0, q = 0, r = 1;
-			for (int i = 2; i <= n; ++i) {
-				p = q;
-				q = r;
-				r = (p + q) % MOD;
+			// 已经计算过，不用再计算了
+			if (memo[n] != 0) {
+				return memo[n];
 			}
-			return r;
+			memo[n] = dp(memo, n - 1) + dp(memo, n - 2);
+			return memo[n];
+		}
+
+		/**
+		 * 自底向上
+		 */
+		int fib3(int N) {
+			if (N == 0) {
+				return 0;
+			}
+			int[] dp = new int[N + 1];
+
+			// base case
+			dp[0] = 0;
+			dp[1] = 1;
+
+			// 状态转移
+			for (int i = 2; i <= N; i++) {
+				dp[i] = dp[i - 1] + dp[i - 2];
+			}
+
+			return dp[N];
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

@@ -19,7 +19,37 @@ public class WriteExam {
 	 * @param root 树
 	 * @return TreeNode
 	 */
-	public TreeNode revert(TreeNode root) {
+
+	/**
+	 * 需翻转的层数
+	 */
+	int k;
+
+	/**
+	 * 当前层数
+	 */
+	int curLevel;
+
+	public TreeNode revert(TreeNode root, int k) {
+		this.k = k;
+		curLevel = 1;
+		traverse(root.left, root.right,curLevel);
 		return root;
+	}
+	
+	void traverse(TreeNode node1, TreeNode node2, int curLevel) {
+
+		if (node1 == null || node2 == null) {
+			return;
+		}
+
+		if (curLevel == k) {
+			int temp = node1.val;
+			node1.val = node2.val;
+			node2.val = temp;
+		}
+
+		traverse(node1.left, node2.right, curLevel + 1);
+		traverse(node1.right, node2.left,curLevel+1);
 	}
 }

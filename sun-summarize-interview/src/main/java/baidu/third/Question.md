@@ -27,15 +27,44 @@ RocketMq如何保证消息不丢失
 * 如果Consumer消费失败，发回给broker时，broker挂掉了，那么Consumer会定时重试这个操作
 * 如果Consumer和broker一起挂了，消息也不会丢失，因为consumer 里面的offset是定时持久化的，重启之后，继续拉取offset之前的消息到本地
 
-Mysql如何保证数据不丢
+[Mysql如何保证数据不丢](https://note.youdao.com/s/aT1Xntc2)
 --------
 简单来说就是依靠redo log和binlog保证持久化到磁盘后就可以保证，异常重启数据可以正常恢复；这里主要说下这两个log的写入机制。
+
+redolog undolog binlog 顺序
+
+在数据库系统中，redo log、undo log和binlog是三种不同的日志，它们的主要目的和应用场景如下：
+
+* redo log（重做日志）：
+  * 用于确保事务的持久性。
+  * 在事务提交后，先写入redo log，并且保证redo log写入后，事务才被认为已经提交。
+  * redo log记录的是数据页的物理修改，用于恢复提交后的物理数据页(data page)。
+* undo log（撤销日志）：
+  * 用于保证事务的原子性和一致性。
+  * 当事务执行时，会先在undo log中记录数据的旧图像，
+  * 如果事务执行过程中发生错误或者回滚，可以通过undo log来回滚到事务开始之前的状态。
+* binlog（二进制日志）：
+  * 也称作binary log，用于复制和数据恢复
+  * 。binlog记录了所有影响数据库数据的语句，但不包括SELECT、SELECT . . . INTO等不修改数据的语句，以及没有改变的语句。
+  * binlog是以事件的形式记录，包含了足够的信息去重建在主库或者任何从库执行的语句。
+
+在数据库操作中，这三种日志的写入顺序通常是这样的：
+
+* 事务开始。
+* 在undo log中记录事务开始前的状态。
+* 修改数据页，生成redo log。
+* 记录binlog日志。
+* 事务提交，redo log写入提交状态。
+* binlog可能也会在此时同步到磁盘。
+
+>这个顺序保证了即使在数据库崩溃的情况下，也能够通过redo log来恢复未写入binlog的已提交事务，然后通过binlog来进行数据同步和恢复。
 
 Mysql都有哪些锁及其对应的实现，哪些是默认加的
 --------
 
-MySql索引的存储结构
+[MySql索引的存储结构](https://note.youdao.com/s/68jlHhTy)
 --------
+B+树
 
 Redis缓存的淘汰策略
 -------
@@ -45,8 +74,8 @@ Redis缓存的淘汰策略
 
 spring如何解决bean的循环依赖问题
 ------
-* 一级缓存：用于存放完全初始化好的 bean 
-* 二级缓存：存放原始的 bean 对象（尚未填充属性），用于解决循环依赖 
+* 一级缓存：用于存放完全初始化好的 bean
+* 二级缓存：存放原始的 bean 对象（尚未填充属性），用于解决循环依赖
 * 三级级缓存：存放 bean 工厂对象，用于解决循环依赖
 
 > bean 的获取过程：先从一级获取，失败再从二级、三级里面获取
@@ -62,23 +91,28 @@ spring如何解决bean的循环依赖问题
 SpringBoot如何实现Stater
 ---
 
-JVM的内存结构 ，每一部分都存了什么
+[JVM的内存结构 ，每一部分都存了什么](/baidu/second/Question.md#jvm分区 )
 -------
+
 JVM的优化方式
 -----
 
 G1垃圾回收器的回收过程
 ------
 
-Synchronized与ReentrantLock实现原理与区别
+[Synchronized与ReentrantLock实现原理与区别](/didi/first/Question.md#3重量级锁与reentrantlock的区别锁变化的过程-共享锁与独占锁的实现轻量级锁为什么自璇)
 -----
+
 redis中的大key如何处理
 ----
-缓存穿透，缓存击穿，缓存雪崩的解决方案
+
+[缓存穿透，缓存击穿，缓存雪崩的解决方案](/jingdong/third/Question.md/#六如何使用redis的存热点数据如何避免缓存击穿)
 -----
-布隆过滤器
+
+[布隆过滤器](/jingdong/third/QuestionExtend.md)
 ----
-线程的状态有哪些
+
+[线程的状态有哪些](https://www.itheima.com/news/20221107/102713.html)
 -----
 
 

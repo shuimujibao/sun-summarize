@@ -30,8 +30,6 @@ package record.leetcode.editor.cn;
 // Related Topics 字符串 动态规划
 // 👍 5120 👎 0
 
-import java.util.Arrays;
-
 public class LongestPalindromicSubstring {
 	public static void main(String[] args) {
 		Solution solution = new LongestPalindromicSubstring().new Solution();

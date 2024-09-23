@@ -38,54 +38,78 @@ package record.leetcode.editor.cn;
 // Related Topics 数组 哈希表 字符串 排序 👍 1931 👎 0
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GroupAnagrams {
 	public static void main(String[] args) {
 		Solution solution = new GroupAnagrams().new Solution();
-//		String[] strs = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
-		String[] strs = new String[]{"ddddddddddg", "dgggggggggg"};
+		String[] strs = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
+		solution.groupAnagrams(strs);
 		solution.groupAnagrams(strs);
 	}
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
 		public List<List<String>> groupAnagrams(String[] strs) {
-
-			// 返回值集合
-			HashMap<String, List<String>> resultMap = new HashMap<>();
-
+			// 编码到分组的映射
+			HashMap<String, List<String>> codeToGroup = new HashMap<>();
 			for (String s : strs) {
-
-				// 统计每个字符串中字符出现的次数
-				HashMap<Character, Integer> recordMap = new HashMap<>();
-				char[] charArray = s.toCharArray();
-				Arrays.sort(charArray);
-
-				for (char c : charArray) {
-					recordMap.put(c, recordMap.getOrDefault(c, 1));
-				}
-
-				// 构造结果集中的key
-				// eg: a1b3c1
-				StringBuilder resultMapKey = new StringBuilder();
-				recordMap.forEach((key, value) -> resultMapKey.append(key).append(value));
-
-				List<String> resultMapValue = resultMap.get(resultMapKey.toString());
-				if (Objects.isNull(resultMapValue)) {
-					resultMapValue = new ArrayList<>();
-				}
-				resultMapValue.add(s);
-
-				// 记录结果
-				resultMap.put(resultMapKey.toString(), resultMapValue);
+				// 对字符串进行编码
+				String code = encode(s);
+				// 把编码相同的字符串放在一起
+				codeToGroup.putIfAbsent(code, new LinkedList<>());
+				codeToGroup.get(code).add(s);
 			}
+			// 获取结果
+			return new LinkedList<>(codeToGroup.values());
+		}
 
-			return new ArrayList<>(resultMap.values());
+		// 利用每个字符的出现次数进行编码
+		String encode(String s) {
+			char[] count = new char[26];
+			for (char c : s.toCharArray()) {
+				int delta = c - 'a';
+				count[delta]++;
+			}
+			return new String(count);
+		}
 
-//			return new ArrayList<>(Arrays.stream(strs)
-//				.collect(Collectors.groupingBy(s ->
-//					s.chars().sorted()
-//						.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString())).values());
+		public List<List<String>> groupAnagrams2(String[] strs) {
+			// 遍历字符数组同时专为 List
+			Collection<List<String>> values = Arrays.stream(strs).collect(
+				// 对当前字符数组进行分组
+				Collectors.groupingBy(s ->
+					//
+					s.chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString()
+				)
+			).values();
+
+			// 返回分组后的结果
+			return new ArrayList<>(values);
+
+		}
+
+
+		public List<List<String>> groupAnagrams3(String[] strs) {
+			// key = 字符串中asscii升序后对应的字符串
+			// value = 当前字符串的集合，即异位词的集合
+			Map<String, List<String>> map = new HashMap<>();
+			for (String s : strs) {
+				// 获取当前字符串，对应的字符码
+				char[] chars = s.toCharArray();
+				// 排序，每个异位词排序结果相同，则对应的升序字符串相同
+				Arrays.sort(chars);
+				String sorted = new String(chars);
+
+				// 集合中不包含先初始化空集合，再插入
+				// 若包含则直接插入
+				if (!map.containsKey(sorted)) {
+					map.put(sorted, new ArrayList<>());
+				}
+
+				map.get(sorted).add(s);
+			}
+			return new ArrayList<>(map.values());
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

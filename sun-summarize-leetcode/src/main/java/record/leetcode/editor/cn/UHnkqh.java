@@ -81,15 +81,22 @@ public class UHnkqh {
 	class Solution {
 		public ListNode reverseList(ListNode head) {
 
-			ListNode preNode = new ListNode(-1);
-			ListNode temp;
-			while (head != null) {
-				temp = preNode.next;
-				preNode.next = head;
-				head = head.next;
-				preNode.next.next = temp;
-			}
-			return preNode.next;
+			// 如果链表为null，则直接返回了
+			// 如果链表只剩一个节点，则直接返回节点
+			if (head == null || head.next == null) return head;
+
+			ListNode nextNode = head.next;
+
+			// 需要递归head的下一个节点，所以上述先定义下下个节点
+			ListNode result = reverseList(nextNode);
+
+			// 此时如果head=4，那么head.next=5，head.next(nextNode)的指针执行head，即指向4
+			nextNode.next = head;
+
+			// 5->4...这个顺序执行，则4的prev为5,4的next为null
+			head.next = null;
+
+			return result;
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

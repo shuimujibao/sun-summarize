@@ -51,7 +51,6 @@ public class Permutations {
 
 	//leetcode submit region begin(Prohibit modification and deletion)
 	class Solution {
-
 		/**
 		 * 结果集
 		 */
@@ -63,15 +62,11 @@ public class Permutations {
 		LinkedList<Integer> track = new LinkedList<>();
 
 		public List<List<Integer>> permute(int[] nums) {
-
-
 			backtrack(nums, track);
-
 			return res;
 		}
 
 		void backtrack(int[] nums, LinkedList<Integer> track) {
-
 			// 中止条件
 			if (track.size() == nums.length) {
 				res.add(new LinkedList<>(track));
@@ -90,7 +85,6 @@ public class Permutations {
 				backtrack(nums, track);
 				track.removeLast();
 			}
-
 		}
 	}
 //leetcode submit region end(Prohibit modification and deletion)

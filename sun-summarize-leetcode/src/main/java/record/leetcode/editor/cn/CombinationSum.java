@@ -78,7 +78,6 @@ public class CombinationSum {
 			return allResult;
 		}
 
-
 		void backTracking(int start, int[] candidates, int target) {
 			// 路径和
 			int sum = path.stream().mapToInt(Integer::intValue).sum();
